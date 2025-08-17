@@ -32,14 +32,15 @@
     html{
         font-size:16px;
         scroll-behavior: smooth;
+        overflow-x: hidden;
     }
 
     .background_pattern {
         position: fixed;
         inset: 0;
-        background-image: radial-gradient(rgba(191, 164, 143, 1) 0.125rem, transparent 0.125rem);
-        background-size: 1.875rem 1.875rem;
-        -webkit-mask-image: radial-gradient(circle 3.75rem at var(--x, 50%) var(--y, 50%), rgba(0,0,0,1) 100%, transparent 100%);
+        background-image: radial-gradient(rgba(191, 164, 143, 1) 0.09375rem, transparent 0.09375rem);
+        background-size: 2rem 2rem;
+        -webkit-mask-image: radial-gradient(circle 3rem at var(--x, 50%) var(--y, 50%), rgba(0,0,0,1) 100%, transparent 100%);
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: center;
         pointer-events: none; 
@@ -57,15 +58,48 @@
         overflow-x:hidden
     }
 
-    body.dark{
-        background-color: #3C3C3D;
+    body.dark, body.dark #project .project_content{
+        background-color: #111111;
         color: white;
         transition: background-color 0.8s, color 0.8s;
 }
 
-    body.dark a, body.dark button{
+    body.dark a, body.dark button,body.dark #project .project_content a{
         color: white;
         transition: background-color 0.8s, color 0.8s;
+    }
+
+    body.dark nav ul li a:hover, body.dark .navigation button:hover, body.dark #home button:hover{
+        background-color:rgba(255, 255, 255, 1);
+    }
+
+    body.dark #home{
+        background-color: #111111;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    body.dark #project{
+        background-color: #393E46;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    body.dark #about{
+        background-color: #2C2C2C;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    body.dark #contact{
+        background-color: #4B3F2F;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    body.dark footer{
+        background-color: #2B2B2B;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    body.dark #about .about_photo img{
+        box-shadow: 0 0 0.3125rem rgba(255, 255, 255, 0.5), 0 0 0.625rem rgba(255, 255, 255, 0.5), 0 0 1.25rem rgba(255, 255, 255, 0.5);
     }
     
     nav {
@@ -91,7 +125,7 @@
     }
 
     nav ul li a:hover {
-        background-color:rgba(0, 0, 0, 0.1);
+        background-color:rgba(0, 0, 0, 1);
         backdrop-filter:blur(10rem);
         color: darkgrey;
         cursor: pointer;
@@ -126,7 +160,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color:rgba(0, 0, 0, 0.4);
+        background-color:rgba(0, 0, 0, 0.1);
         backdrop-filter:blur(10rem);
         box-shadow: 0 0.25rem 0.30rem rgba(0, 0, 0, 0.3);
     }
@@ -151,44 +185,25 @@
     .navigation button:hover {
         border:none;
         border-radius: 10em;
-        background-color:rgba(0, 0, 0, 0.1);
-        box-shadow: 0 0.25em 0.30em rgba(0, 0, 0, 0.2);
+        background-color:rgba(0, 0, 0, 1);
+        box-shadow: 0 0.25em 0.30em rgba(0, 0, 0, 2);
         padding:1.1em;
         color: #BFA48F;
         cursor: pointer;
 
     }
-
+    
     .tooltip {
         position: relative;
         display: inline-block;
         color: black;
     }
 
-    .tooltiptext {
-        visibility: hidden;
-        opacity: 0;
-        background-color: rgba(0, 0, 0, 1);
-        color: white;
-        text-align: center;
-        padding: 0.25em 0.5em;
-        border-radius: 0.25em;
-        position: absolute;
-        left: 50%;
-        bottom:125%;
-        transform: translateX(-50%);
-        transition: opacity 0.8s;
-        white-space: nowrap;
-        font-size: 0.75em;
-        z-index: 1; 
+    #hamburger_menu {
+        display: none;
     }
 
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    #home , #project , #about{
+    #home , #project , #about ,#contact{
         height:100vh;
         display:flex;
         flex-direction:column;
@@ -197,17 +212,46 @@
         align-items:center;
     }
 
-    #home h1 , #project h1 , #about h1{
+    #home h1 , #project h1 , #about h1, #contact h1{
         text-align:center;
         font-family:Orbitron;
         font-weight:bold;
         font-size: 3em;
     }
 
-    #home p ,#project ,#about p{
+    #home p ,#project ,#about p, #contact p{
         text-align:center;
-        font-family:Orbitron;
+        font-family:sans-serif;
+        font-weight:bold;
         font-size:1em
+    }
+
+    #home{
+        background-color: #FDFBF7;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    #project{
+        background-color: #E0C097;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    #about{
+        background-color: #F5E6D3;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    #contact{
+        background-color: #D1B89E;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    footer{
+        background-color: #BFA48F;
+        transition: background-color 0.8s, color 0.8s;
+        text-align: center;
+        padding: 0.9375em 0.625em;
+        font-size: 0.875em;
     }
 
     #home button{
@@ -215,31 +259,25 @@
         font-weight:bold;
         font-family:Orbitron;
         border-radius: 0.5em;
-        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.1);
         backdrop-filter:blur(10em);
         padding:1.1em;
-        background-color: rgba(0,0,0, 0.4);
+        background-color: rgba(0,0,0, 0.1);
         transition: background-color 0.8s color:0.8s;
-        cursor:pointer;
+        cursor:pointer
     }
 
     #home button:hover {
         border:none;
         font-family:Orbitron;
         border-radius: 0.5em;
-        background-color:rgba(0, 0, 0, 0.5);
+        background-color:rgba(0, 0, 0, 1);
         backdrop-filter:blur(10em);
         box-shadow: 0 0.25em 0.30em rgba(0, 0, 0, 0.4);
         transition: background-color 0.8s, color 0.8s;
         padding:1.1em;
         color: #BFA48F;
         cursor: pointer;
-    }
-
-    #project h2{
-        font-size:1em;
-        font-family:Orbitron ,sans-serif;
-        text-align:left;
     }
 
     #project .project_grid p{
@@ -266,9 +304,10 @@
         flex: 0 0 15;
         scroll-snap-align: center;
         border-radius: 0.3em;
-        background-color:rgba(0, 0, 0, 0.1);
+        background-color: #FDFBF7;
         box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.4);
         width:15em;
+        font-weight:bold;
         height:auto;
         margin:0.9em;
         padding:0.5em;
@@ -310,7 +349,7 @@
         left:0;
         width:100%;
         height:20%;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 1);
         color: white;
         padding: 0.25em 0.5em;
         border-radius: 0.25em;
@@ -339,6 +378,7 @@
         display:flex;
         flex-wrap:wrap;
         justify-content:space-between;
+        width:60%;
     }
 
     #about .about_description {
@@ -348,53 +388,101 @@
         display:flex;
         flex-direction:column;
         justify-content:center;
+
+    }
+
+    
+    #about .about_description p.about_text{
+        display:flex;
+        justify-content:left;
+        text-align:left;
+        font-size:1em;
+        font-family:sans-serif;
+        font-weight:normal;
     }
 
     #about .about_photo img{
-        width:50%;
+        width:45%;
+        margin-top:2em;
         height:auto;
+        border-radius:100%;
+        border:0.0625em solid black;
+        box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.5), 0 0 0.625rem rgba(0, 0, 0, 0.5), 0 0 1.25rem rgba(0, 0, 0, 0.5);
     }
 
     @media screen and (max-width: 1024px) {
-    .navigation {
-        width: 90%;
-    }
+        .navigation {
+            width: 90%;
+        }
 
-    #about .about_container {
-        flex-direction: column;
-        align-items: center;
-    }
+        #about .about_container {
+            flex-direction: column;
+            align-items: center;
+        }
 
-    #about .about_photo img {
-        width: 70%;
-    }
-    }
+        #about .about_photo img {
+            width: 70%;
+        }
+        }
 
-    @media screen and (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
+    @media screen and (max-width: 720px) {
+        .navigation{
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%;
+            padding: 0.5rem 1rem;
+            font-size:1em;
+        }   
+        
+        nav ul {
+            flex-direction: column;
+            background-color:rgba(0, 0, 0, 0.1);
+            position:absolute;
+            top:4rem;
+            display:none;
+            align-items: center;
+            padding: 1rem 0;
+            left:15.5em;
+            border-radius:10em;
+        }
 
-    nav ul li a {
-        margin: 0.5rem 0;
-    }
+        nav ul li a {
+            text-align:center;
+        }
 
-    #home h1 {
-        font-size: 2em;
-    }
+        nav ul.show{
+            display:flex;
+        }
 
-    #project .project_grid {
-        width: 90%;
-    }
+        #hamburger_menu{
+            display:block;
+        }
 
-    #project .project_content {
-        width: 12em;
-    }
+        #home{
+            margin-top:-7.5em;
+        }
 
-    #about .about_photo img {
-        width: 100%;
-    }
+        #home h1 , #project h1, #about h1, #contact h1{
+            font-size: 2em;
+        }
+
+        #project p , #about p, #contact p{
+            font-size:0.8em;
+        }
+
+
+        #project .project_grid {
+            width: 90%;
+        }
+
+        #project .project_content {
+            width: 12em;
+        }
+
+        #about .about_photo img {
+            width: 25%;
+        }
     }
 
     </style>
@@ -407,28 +495,29 @@
      data-aos-delay="400"
      data-aos-duration="1500">
         <p data-aos="zoom-out" data-aos-duration="1600" data-aos-delay="400">Fadlan Server</p>
-            <nav>
+            <nav id="menu">
                 <ul>
                     <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="0">
                         <a href="index.php"  class="tooltip"><i class="fa-solid fa-house"></i>
-                        <span class="tooltiptext">Home</span>   
+                        <span>Home</span>   
                         </a>
                     </li>
                     <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="400">
                         <a href="#project" class="tooltip"><i class="fa-solid fa-folder-open"></i>
-                    <span class="tooltiptext">Project</span></a>
+                    <span>Project</span></a>
                     </li>
                     <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="800">
                         <a href="#about" class="tooltip"><i class="fa-solid fa-user" ></i>
-                    <span class="tooltiptext">About</span></a>
+                    <span>About</span></a>
                     </li>
                     <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="1200">
                         <a href="#contact" class="tooltip"><i class="fa-solid fa-phone"></i>
-                    <span class="tooltiptext">Contact</span></a>
+                    <span >Contact</span></a>
                     </li>
                 </ul>
             </nav>
         <button id="btn"><i class="fa-solid fa-moon"></i></button>
+        <button id="hamburger_menu"><i class="fa-solid fa-bars"></i></button>    
     </header>    
 
     <main>
@@ -440,27 +529,24 @@
 
         <section id="project">
                 <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Project Showcase</h1>
-                <p data-aos="fade-down" data-aos-duration="1600" data-aos-delay="400">Discover the stories behind my projects, the challenges I've faced, and the creative solutions I've built along the way.</p>
+                <p data-aos="fade-down" data-aos-duration="1600" data-aos-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <div class="project_grid" >
                     <div class="project_track">
                         <article class="project_content" data-aos="zoom-in-down" data-aos-duration="2000" data-aos-delay="400">
                             <span class="project_header">Exmaple Project</span>
                             <img src="ilustration.jpg" alt="ilustration">
-                            <h2>Example Project</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <a href="/MyProject/pilihanganda">Detail</a>
                         </article>   
                         <article class="project_content" data-aos="zoom-in-down" data-aos-duration="2000" data-aos-delay="800">
                             <span class="project_header">Exmaple Project</span>
                             <img src="ilustration.jpg" alt="ilustration">
-                            <h2>Example Project</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <a href="/MyProject/pilihanganda">Detail</a>
                         </article>    
                         <article class="project_content" data-aos="zoom-in-down" data-aos-duration="2000" data-aos-delay="1200">
                             <span class="project_header">Exmaple Project</span>
                             <img src="ilustration.jpg" alt="ilustration">
-                            <h2>Example Project</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <a href="/MyProject/pilihanganda">Detail</a>
                         </article>   
@@ -468,46 +554,45 @@
                         <article class="project_content" data-aos="zoom-in-down" data-aos-duration="2000" data-aos-delay="1600">
                             <span class="project_header">Exmaple Project</span>
                             <img src="ilustration.jpg" alt="ilustration">
-                            <h2>Example Project</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <a href="/MyProject/pilihanganda">Detail</a>
                         </article>   
-                        <article class="project_content">
-                            <span class="project_header">Exmaple Project</span>
-                            <img src="ilustration.jpg" alt="ilustration">
-                            <h2>Example Project</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a href="/MyProject/pilihanganda">Detail</a>
-                        </article>    
-                        <article class="project_content" >
-                            <span class="project_header">Exmaple Project</span>
-                            <img src="ilustration.jpg" alt="ilustration">
-                            <h2>Example Project</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a href="/MyProject/pilihanganda">Detail</a>
-                        </article>  
-
                     </div>
                 </div>
         </section>
 
         <section id="about">
             <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">About Me</h1>
-            <p data-aos="fade-down" data-aos-duration="1400" data-aos-delay="400">Discover the stories behind my projects, the challenges I've faced, and the creative solutions I've built along the way.</p>
+            <p data-aos="fade-down" data-aos-duration="1400" data-aos-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <div class="about_container">
+                <div class="about_photo" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="400">
+                    <img src="foto.png" alt="MY Profile">
+                </div>
                 <div class="about_description">
                     <h2>Hello i'm <br> <span>Fadlan Firdaus</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="about_photo">
-                    <img src="profil.png" alt="MY Profile">
+                    <p class="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
             </div>
         </section>
+
+        <section id="contact">
+            <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Contact</h1>
+            <p data-aos="fade-down" data-aos-duration="1400" data-aos-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </section>
     </main>
-        
+
+    <footer>
+        <p>&copy; 2025 Fadlan Server. All rights reserved.</p>
+    </footer>
 
 <script>
+    const hamburger_menu = document.getElementById("hamburger_menu");
+    const menu = document.querySelector("#menu ul");
+
+    hamburger_menu.addEventListener("click", () => {
+    menu.classList.toggle("show");
+    });
+
     window.addEventListener("load", () => {
         AOS.init();
         setTimeout(() => {
