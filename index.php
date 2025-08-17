@@ -62,7 +62,12 @@
         background-color: #111111;
         color: white;
         transition: background-color 0.8s, color 0.8s;
-}
+    }
+
+    body.dark #project .project_header{
+        background-color: #111111;
+        color: white;
+    }
 
     body.dark a, body.dark button,body.dark #project .project_content a{
         color: white;
@@ -122,6 +127,7 @@
         margin-right:2rem;
         display: block;
         font-weight:bold;
+        border-radius:10em;
     }
 
     nav ul li a:hover {
@@ -328,7 +334,6 @@
         border-radius:0.3em;
         display:block;
         object-fit:cover;
-
     }
 
     #project .project_content a{
@@ -349,8 +354,8 @@
         left:0;
         width:100%;
         height:20%;
-        background-color: rgba(0, 0, 0, 1);
-        color: white;
+        background-color: rgba(255, 255, 255, 1);
+        color: black;
         padding: 0.25em 0.5em;
         border-radius: 0.25em;
         position: absolute;
@@ -388,7 +393,6 @@
         display:flex;
         flex-direction:column;
         justify-content:center;
-
     }
 
     
