@@ -58,10 +58,14 @@
         overflow-x:hidden
     }
 
-    body.dark, body.dark #project .project_content{
+    body.dark, body.dark #project .project_content, body.dark #home button{
         background-color: #111111;
         color: white;
         transition: background-color 0.8s, color 0.8s;
+    }
+
+    body.dark #home button{
+        border:white solid 1px
     }
 
     body.dark #project .project_header{
@@ -74,7 +78,7 @@
         transition: background-color 0.8s, color 0.8s;
     }
 
-    body.dark nav ul li a:hover, body.dark .navigation button:hover, body.dark #home button:hover{
+    body.dark nav ul li a:hover{
         background-color:rgba(255, 255, 255, 1);
     }
 
@@ -127,7 +131,6 @@
         margin-right:2rem;
         display: block;
         font-weight:bold;
-        border-radius:10em;
     }
 
     nav ul li a:hover {
@@ -135,7 +138,6 @@
         backdrop-filter:blur(10rem);
         color: darkgrey;
         cursor: pointer;
-        border-radius:10rem;
     }
 
     .navigation a::after {
@@ -151,10 +153,11 @@
 
     .navigation a:hover {
         color: #BFA48F;
+        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.4);
     }
 
     .navigation a:hover::after {
-         width: 100%;
+        width: 100%;
     }
 
     .navigation {
@@ -166,9 +169,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color:rgba(0, 0, 0, 0.1);
         backdrop-filter:blur(10rem);
-        box-shadow: 0 0.25rem 0.30rem rgba(0, 0, 0, 0.3);
     }
 
     .navigation p{
@@ -179,8 +180,6 @@
 
     .navigation button {
         border:none;
-        border-radius: 10em;
-        box-shadow: 0 0.25rem 0.30rem rgba(0, 0, 0, 0.2);
         backdrop-filter:blur(10em);
         padding:1.1em;
         background-color: transparent;
@@ -190,13 +189,9 @@
 
     .navigation button:hover {
         border:none;
-        border-radius: 10em;
-        background-color:rgba(0, 0, 0, 1);
-        box-shadow: 0 0.25em 0.30em rgba(0, 0, 0, 2);
         padding:1.1em;
-        color: #BFA48F;
+        background-color: transparent;
         cursor: pointer;
-
     }
     
     .tooltip {
@@ -220,7 +215,7 @@
 
     #home h1 , #project h1 , #about h1, #contact h1{
         text-align:center;
-        font-family:Orbitron;
+        font-family:Orbitron, sans-serif;
         font-weight:bold;
         font-size: 3em;
     }
@@ -261,29 +256,45 @@
     }
 
     #home button{
-        border:none;
+        background-color: #FDFBF7;
         font-weight:bold;
         font-family:Orbitron;
-        border-radius: 0.5em;
-        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.1);
-        backdrop-filter:blur(10em);
+        border-radius: 10em;
         padding:1.1em;
-        background-color: rgba(0,0,0, 0.1);
+        border: black solid 1px;
         transition: background-color 0.8s color:0.8s;
-        cursor:pointer
+        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.1);
+        cursor:pointer;
+        color:black;
+
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     #home button:hover {
-        border:none;
-        font-family:Orbitron;
-        border-radius: 0.5em;
-        background-color:rgba(0, 0, 0, 1);
-        backdrop-filter:blur(10em);
-        box-shadow: 0 0.25em 0.30em rgba(0, 0, 0, 0.4);
-        transition: background-color 0.8s, color 0.8s;
+        border: black solid 1px;
+        font-family:Orbitron, sans-serif;
+        border-radius: 10em;
+        transition: 0.8s, color 0.8s;
         padding:1.1em;
-        color: #BFA48F;
         cursor: pointer;
+        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.1);
+    }
+
+    #home button span{
+        right: -1.5em; 
+        opacity: 0;
+        transform: translateX(-5px);
+        transition: all 0.3s ease;
+        color: black; 
+        font-size: 1em;
+    }
+
+    #home button:hover span{
+        opacity: 1;
+        transform: translateX(0);
     }
 
     #project .project_grid p{
@@ -369,7 +380,6 @@
         display:flex;
         justify-content:center;
         align-items:center;
-
     }
 
     #project .project_content:hover .project_header{
@@ -414,18 +424,49 @@
         box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.5), 0 0 0.625rem rgba(0, 0, 0, 0.5), 0 0 1.25rem rgba(0, 0, 0, 0.5);
     }
 
-    @media screen and (max-width: 1024px) {
-        .navigation {
-            width: 90%;
+    @media screen and (min-width:721px) and (max-width: 1024px) {
+        #home, #project, #about, #contact{
+            height:auto;
+            padding:7em;
         }
 
-        #about .about_container {
-            flex-direction: column;
-            align-items: center;
+        #menu a span{
+            visibility:hidden;
+            opacity:0;
+        }
+
+        #menu a span{
+            visibility:visible;
+            opacity:1;
+        }
+
+        #home h1, #project h1, #about h1, #contact h1{
+            font-size:1.4em; 
+        }
+
+        #home p ,#project ,#about p, #contact p{
+            font-size:0.8em;
+        }
+
+        #home button{
+            padding:0.5em;
+        }
+
+        #home button:hover{
+            padding:0.5em;
+        }
+
+        #project .project_grid{
+            width: 70%;
+        }
+
+        .navigation {
+            width: 90%;
+            font-size:0.8em;
         }
 
         #about .about_photo img {
-            width: 70%;
+            width: 25%;
         }
         }
 
@@ -468,7 +509,7 @@
         }
 
         #home h1 , #project h1, #about h1, #contact h1{
-            font-size: 2em;
+            font-size: 1em;
         }
 
         #project p , #about p, #contact p{
@@ -502,7 +543,7 @@
             <nav id="menu">
                 <ul>
                     <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="0">
-                        <a href="index.php"  class="tooltip"><i class="fa-solid fa-house"></i>
+                        <a href="index.php" class="tooltip"><i class="fa-solid fa-house"></i>
                         <span>Home</span>   
                         </a>
                     </li>
@@ -516,7 +557,7 @@
                     </li>
                     <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="1200">
                         <a href="#contact" class="tooltip"><i class="fa-solid fa-phone"></i>
-                    <span >Contact</span></a>
+                    <span>Contact</span></a>
                     </li>
                 </ul>
             </nav>
@@ -528,7 +569,8 @@
         <section id="home">
             <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Welcome to Fadlan Server</h1>
             <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="400">your gateway to my digital works</p>
-                <a href="#project" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="800"><button >Get Started</button></a>
+                <a href="#project" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="800">        
+                <a href="#project" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="800"><button>Get Started <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span> </button></a>
         </section>
 
         <section id="project">
@@ -536,26 +578,26 @@
                 <p data-aos="fade-down" data-aos-duration="1600" data-aos-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <div class="project_grid" >
                     <div class="project_track">
-                        <article class="project_content" data-aos="zoom-in-down" data-aos-duration="2000" data-aos-delay="400">
+                        <article class="project_content" >
                             <span class="project_header">Exmaple Project</span>
                             <img src="ilustration.jpg" alt="ilustration">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <a href="/MyProject/pilihanganda">Detail</a>
                         </article>   
-                        <article class="project_content" data-aos="zoom-in-down" data-aos-duration="2000" data-aos-delay="800">
+                        <article class="project_content" >
                             <span class="project_header">Exmaple Project</span>
                             <img src="ilustration.jpg" alt="ilustration">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <a href="/MyProject/pilihanganda">Detail</a>
                         </article>    
-                        <article class="project_content" data-aos="zoom-in-down" data-aos-duration="2000" data-aos-delay="1200">
+                        <article class="project_content" >
                             <span class="project_header">Exmaple Project</span>
                             <img src="ilustration.jpg" alt="ilustration">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <a href="/MyProject/pilihanganda">Detail</a>
                         </article>   
 
-                        <article class="project_content" data-aos="zoom-in-down" data-aos-duration="2000" data-aos-delay="1600">
+                        <article class="project_content">
                             <span class="project_header">Exmaple Project</span>
                             <img src="ilustration.jpg" alt="ilustration">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
