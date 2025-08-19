@@ -1,4 +1,12 @@
 <?php
+
+// echo "hello world <br>";
+
+// $nama = "fadlan";
+// $umur = 17;
+
+// echo $nama ,"<br>",$umur;
+
     if (! empty($_GET['q'])) {
         $query = htmlspecialchars($_GET['q'], ENT_QUOTES, 'UTF-8');
 
@@ -58,9 +66,14 @@
         overflow-x:hidden
     }
 
-    body.dark, body.dark #project .project_content, body.dark #home button{
+    body.dark, body.dark #home button{
         background-color: #111111;
         color: white;
+        transition: background-color 0.8s, color 0.8s;
+    }
+
+    body.dark .project_content{
+        color:black;
         transition: background-color 0.8s, color 0.8s;
     }
 
@@ -69,140 +82,80 @@
     }
 
     body.dark #project .project_header{
-        background-color: #111111;
+        background-color: #1A1A1A;
         color: white;
     }
 
-    body.dark a, body.dark button,body.dark #project .project_content a{
+    body.dark a, body.dark button{
         color: white;
         transition: background-color 0.8s, color 0.8s;
     }
 
-    body.dark nav ul li a:hover{
-        background-color:rgba(255, 255, 255, 1);
+    body.dark #project .project_content a{
+        color:black;
     }
 
-    body.dark #home{
+    body.dark #home, body.dark #contact, body.dark footer{
         background-color: #111111;
         transition: background-color 0.8s, color 0.8s;
     }
+
 
     body.dark #project{
-        background-color: #393E46;
+        background-color: #1A1A1A;
         transition: background-color 0.8s, color 0.8s;
     }
 
     body.dark #about{
-        background-color: #2C2C2C;
+        background-color: #FDFBF7;
         transition: background-color 0.8s, color 0.8s;
+        color:black;
     }
 
-    body.dark #contact{
-        background-color: #4B3F2F;
-        transition: background-color 0.8s, color 0.8s;
-    }
-
-    body.dark footer{
-        background-color: #2B2B2B;
-        transition: background-color 0.8s, color 0.8s;
+    body.dark #about .about_text, body.dark #project .filter_btn{
+        color:black;
     }
 
     body.dark #about .about_photo img{
-        box-shadow: 0 0 0.3125rem rgba(255, 255, 255, 0.5), 0 0 0.625rem rgba(255, 255, 255, 0.5), 0 0 1.25rem rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.5), 0 0 0.625rem rgba(0, 0, 0, 0.5), 0 0 1.25rem rgba(0, 0, 0, 0.5);
+    }
+
+    #menu{
+        display:block;
+        position:absolute;
+        top:4rem;
+        left:22rem;
     }
     
     nav {
         overflow: visible;
     }
 
-    nav ul {
-        list-style: none;
-        margin:0rem;
-        padding:0rem;
-        display:flex;
-    }
-
-    nav ul li a {
-        transition: color 0.3s ease;
+    nav a {
+        transition: all 0.5s ease;
         text-decoration: none;
-        justify-content:center;
-        font-family: Orbitron;
+        font-family: Orbitron,sans-serif;
         padding: 1rem 1rem 1rem 1rem;
         margin-right:2rem;
-        display: block;
         font-weight:bold;
-    }
-
-    nav ul li a:hover {
-        background-color:rgba(0, 0, 0, 1);
-        backdrop-filter:blur(10rem);
-        color: darkgrey;
-        cursor: pointer;
-    }
-
-    .navigation a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        height: 0.125rem;
-        background-color: #BFA48F;
-        transition: width 0.3s ease; 
-    }
-
-    .navigation a:hover {
-        color: #BFA48F;
-        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.4);
-    }
-
-    .navigation a:hover::after {
-        width: 100%;
-    }
-
-    .navigation {
-        position:relative;
-        top: 3rem;
-        margin: 0rem auto;
-        width:70%;
-        border-radius:10em;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        backdrop-filter:blur(10rem);
-    }
-
-    .navigation p{
-        padding-left:1em;
-        font-family:Orbitron;
-        font-weight:bold;
-    }
-
-    .navigation button {
-        border:none;
-        backdrop-filter:blur(10em);
-        padding:1.1em;
-        background-color: transparent;
-        transition: background-color 0.8s color:0.8s;
-        cursor:pointer;
-    }
-
-    .navigation button:hover {
-        border:none;
-        padding:1.1em;
-        background-color: transparent;
-        cursor: pointer;
-    }
-    
-    .tooltip {
-        position: relative;
-        display: inline-block;
         color: black;
     }
 
-    #hamburger_menu {
-        display: none;
+    .topnav {
+        display: flex;
+        align-items:center;
+        width:100%;
     }
+
+    .icon{
+        display:none;
+    }
+
+    mark{
+        border-radius:0.3em;
+        padding:0.4em;
+        transition: all 0.5s ease;
+    } 
 
     #home , #project , #about ,#contact{
         height:100vh;
@@ -220,36 +173,34 @@
         font-size: 3em;
     }
 
-    #home p ,#project ,#about p, #contact p{
+    #home p ,#project , #contact p{
         text-align:center;
         font-family:sans-serif;
-        font-weight:bold;
-        font-size:1em
+        font-weight:normal;
+        font-size:1em;
     }
 
-    #home{
+    #about p{
+        color:white;
+    }
+
+    #home,#contact,footer{
         background-color: #FDFBF7;
         transition: background-color 0.8s, color 0.8s;
     }
 
     #project{
-        background-color: #E0C097;
+        background-color: #F5F5F5;
         transition: background-color 0.8s, color 0.8s;
     }
 
     #about{
-        background-color: #F5E6D3;
-        transition: background-color 0.8s, color 0.8s;
-    }
-
-    #contact{
-        background-color: #D1B89E;
+        background-color: #111111;
+        color:white;
         transition: background-color 0.8s, color 0.8s;
     }
 
     footer{
-        background-color: #BFA48F;
-        transition: background-color 0.8s, color 0.8s;
         text-align: center;
         padding: 0.9375em 0.625em;
         font-size: 0.875em;
@@ -258,11 +209,11 @@
     #home button{
         background-color: #FDFBF7;
         font-weight:bold;
-        font-family:Orbitron;
+        font-family:Orbitron,sans-serif;
         border-radius: 10em;
         padding:1.1em;
         border: black solid 1px;
-        transition: background-color 0.8s color:0.8s;
+        transition: background-color 0.8s,color:0.8s;
         box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.1);
         cursor:pointer;
         color:black;
@@ -297,6 +248,25 @@
         transform: translateX(0);
     }
 
+    #project .filter_btn {
+        border: none;
+        padding:1em;
+        background-color:yellow;
+        margin:2em;
+        transition: all 0.5s ease;
+        font-family: sans-serif;
+        font-weight: bold;
+        border-radius:0.7em;
+        box-shadow: 0 0.5em 1em rgba(0,0,0,0.1);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        cursor:pointer;
+    }
+
+    #project .filter_btn:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 0.9em 2em rgba(0,0,0,0.2);
+    }
+
     #project .project_grid p{
         font-size:0.7em;
         font-family:sans-serif;
@@ -320,7 +290,7 @@
     #project .project_content{
         flex: 0 0 15;
         scroll-snap-align: center;
-        border-radius: 0.3em;
+        border-radius: 0.2em;
         background-color: #FDFBF7;
         box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.4);
         width:15em;
@@ -330,6 +300,7 @@
         padding:0.5em;
         justify-content:center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color:black;
     }
 
     #project .project_content:hover{
@@ -368,7 +339,7 @@
         background-color: rgba(255, 255, 255, 1);
         color: black;
         padding: 0.25em 0.5em;
-        border-radius: 0.25em;
+        border-radius: 0.2em;
         position: absolute;
         transform: translateY(-100%);
         transition: opacity 0.5s;
@@ -421,7 +392,7 @@
         height:auto;
         border-radius:100%;
         border:0.0625em solid black;
-        box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.5), 0 0 0.625rem rgba(0, 0, 0, 0.5), 0 0 1.25rem rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 0.3125rem rgba(255, 255, 255, 0.5), 0 0 0.625rem rgba(255, 255, 255, 0.5), 0 0 1.25rem rgba(255, 255, 255, 0.5);
     }
 
     @media screen and (min-width:721px) and (max-width: 1024px) {
@@ -446,6 +417,7 @@
 
         #home p ,#project ,#about p, #contact p{
             font-size:0.8em;
+            font-weight:normal;
         }
 
         #home button{
@@ -471,37 +443,50 @@
         }
 
     @media screen and (max-width: 720px) {
-        .navigation{
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            width: 70%;
-            padding: 0.5rem 1rem;
-            font-size:1em;
-        }   
-        
-        nav ul {
-            flex-direction: column;
-            background-color:rgba(0, 0, 0, 0.1);
+        #menu{
+            width:100%;
             position:absolute;
-            top:4rem;
-            display:none;
-            align-items: center;
-            padding: 1rem 0;
-            left:15.5em;
-            border-radius:10em;
+            top:0rem;
+            left:0rem;
+     
         }
 
-        nav ul li a {
-            text-align:center;
-        }
-
-        nav ul.show{
-            display:flex;
-        }
-
-        #hamburger_menu{
+        .topnav {
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: relative;
+            width:100%;
             display:block;
+        }
+
+        .topnav #myLinks {
+            display: none;
+        }
+
+        .topnav a {
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            display: block;
+        }
+
+        .topnav a.icon {
+            background: transparent;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .active {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
         }
 
         #home{
@@ -514,6 +499,7 @@
 
         #project p , #about p, #contact p{
             font-size:0.8em;
+            font-weight:normal;
         }
 
 
@@ -528,6 +514,10 @@
         #about .about_photo img {
             width: 25%;
         }
+
+        #about .about_description h2{
+            font-size:1em;
+        }
     }
 
     </style>
@@ -535,39 +525,29 @@
 <body>
     <div class="background_pattern"></div>
 
-    <header 
-     class="navigation" data-aos="fade-down"
-     data-aos-delay="400"
-     data-aos-duration="1500">
-        <p data-aos="zoom-out" data-aos-duration="1600" data-aos-delay="400">Fadlan Server</p>
-            <nav id="menu">
-                <ul>
-                    <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="0">
-                        <a href="index.php" class="tooltip"><i class="fa-solid fa-house"></i>
-                        <span>Home</span>   
-                        </a>
-                    </li>
-                    <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="400">
-                        <a href="#project" class="tooltip"><i class="fa-solid fa-folder-open"></i>
-                    <span>Project</span></a>
-                    </li>
-                    <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="800">
-                        <a href="#about" class="tooltip"><i class="fa-solid fa-user" ></i>
-                    <span>About</span></a>
-                    </li>
-                    <li data-aos="fade-left" data-aos-duration="1300" data-aos-delay="1200">
-                        <a href="#contact" class="tooltip"><i class="fa-solid fa-phone"></i>
-                    <span>Contact</span></a>
-                    </li>
-                </ul>
+    <header>
+            <nav id="menu" >
+                    <div class="topnav">
+                            <a class="active" href="#home"><i class="fa-solid fa-code"></i><mark>Fadlan Server</mark></a>
+                        <div id="myLinks">  
+                                <a href="#project"><i class="fa-solid fa-folder-open"></i>
+                                <span>Project</span></a>
+                                <a href="#about"><i class="fa-solid fa-user" ></i>
+                                <span>About</span></a>
+                                <a href="#contact"><i class="fa-solid fa-phone"></i>
+                                <span>Contact</span></a>
+                                <a id="btn"><i class="fa-solid fa-moon"></i>Theme</a>  
+                        </div>
+                            <a href="javascript:void(0);" class="icon" onclick="myfunction()">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                    </div>  
             </nav>
-        <button id="btn"><i class="fa-solid fa-moon"></i></button>
-        <button id="hamburger_menu"><i class="fa-solid fa-bars"></i></button>    
     </header>    
 
     <main>
         <section id="home">
-            <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Welcome to Fadlan Server</h1>
+            <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Welcome to <mark>Fadlan server</mark></h1>
             <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="400">your gateway to my digital works</p>
                 <a href="#project" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="800">        
                 <a href="#project" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="800"><button>Get Started <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span> </button></a>
@@ -576,19 +556,26 @@
         <section id="project">
                 <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Project Showcase</h1>
                 <p data-aos="fade-down" data-aos-duration="1600" data-aos-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                <div class="filter_btn_collection">
+                    <button class="filter_btn">All</button>
+                    <button class="filter_btn">Web</button>
+                    <button class="filter_btn">PHP</button>
+                    <button class="filter_btn">UX Design</button>
+                </div>
                 <div class="project_grid" >
                     <div class="project_track">
                         <article class="project_content" >
-                            <span class="project_header">Exmaple Project</span>
-                            <img src="ilustration.jpg" alt="ilustration">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <span class="project_header">Pilihan Ganda</span>
+                            <img src="pilgan.png" alt="ilustration">
+                            <p>Project ini adalah aplikasi kuis web sederhana yang menampilkan soal pilihan ganda, menghitung skor, dan menampilkan hasil jawaban lengkap dengan status benar atau salah.</p>
                             <a href="/MyProject/pilihanganda">Detail</a>
                         </article>   
                         <article class="project_content" >
-                            <span class="project_header">Exmaple Project</span>
-                            <img src="ilustration.jpg" alt="ilustration">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a href="/MyProject/pilihanganda">Detail</a>
+                            <span class="project_header">Belajar PHP</span>
+                            <img src="belajarphp.png" alt="ilustration">
+                            <p>Project ini adalah program PHP sederhana untuk menampilkan data diri, menghitung penjumlahan, dan menampilkan daftar teman menggunakan variabel, array, dan echo.</p>
+                            <a href="../belajar_php">Detail</a>
                         </article>    
                         <article class="project_content" >
                             <span class="project_header">Exmaple Project</span>
@@ -632,19 +619,34 @@
     </footer>
 
 <script>
-    const hamburger_menu = document.getElementById("hamburger_menu");
-    const menu = document.querySelector("#menu ul");
+    const words = [
+        "Fadlan Server",
+        "Discover More",
+        "Stay Inspired",
+        "Beyond Limits",
+        "Bright Ideas",
+        "Innovation Hub"
+    ];
 
-    hamburger_menu.addEventListener("click", () => {
-    menu.classList.toggle("show");
-    });
+    let i = 0;
+    const mark =document.getElementsByTagName("mark")[1];
 
-    window.addEventListener("load", () => {
-        AOS.init();
-        setTimeout(() => {
-            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-        }, 50);
-    });
+    function changeword(){
+        mark.textContent = words[i];
+        i = (i+1)%words.length;
+    }
+    changeword();
+    setInterval(changeword,2000);
+
+    function myfunction() {
+        var x = document.getElementById("myLinks");
+        x.classList.toggle("show");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        }else {
+            x.style.display = "block";
+        }
+    }
 
     const body = document.body;
     const btn = document.getElementById("btn");
@@ -652,9 +654,9 @@
         body.classList.toggle("dark");
 
         if (body.classList.contains("dark")) {
-            btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            btn.innerHTML = '<i class="fa-solid fa-sun"></i> Theme';
         } else {
-            btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            btn.innerHTML = '<i class="fa-solid fa-moon"></i> Theme';
         }
     });
 
