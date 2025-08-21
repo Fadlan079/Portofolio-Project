@@ -43,16 +43,56 @@
         overflow-x: hidden;
     }
 
-    .background_pattern {
-        position: fixed;
-        inset: 0;
-        background-image: radial-gradient(rgba(191, 164, 143, 1) 0.09375rem, transparent 0.09375rem);
-        background-size: 2rem 2rem;
-        -webkit-mask-image: radial-gradient(circle 3rem at var(--x, 50%) var(--y, 50%), rgba(0,0,0,1) 100%, transparent 100%);
-        -webkit-mask-repeat: no-repeat;
-        -webkit-mask-position: center;
-        pointer-events: none; 
+    /* .circle1 {
+        width: 40%;
+        height: 20%;
+        background: rgba(255, 213, 0, 0.5);
+        border-radius: 100%;
+        position: absolute;
+        top: 5%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+        animation: pulse 3s infinite ease-in-out;
+    } */
+
+    /* .circle2 {
+        width: 40%;
+        height: 20%;
+        background: rgba(0, 179, 255, 0.5);
+        border-radius: 100%;
+        position: absolute;
+        top: 7%;
+        left: 87%;
+        transform: translate(-50%, -50%);
+        animation: pulse 3s infinite ease-in-out;
     }
+
+    
+    .circle3 {
+        width: 40%;
+        height: 20%;
+        background: rgba(255, 0, 255, 0.5);
+        border-radius: 100%;
+        position: absolute;
+        top: 9%;
+        left: 85%;
+        transform: translate(-50%, -50%);
+        animation: pulse 3s infinite ease-in-out;
+    }
+
+    
+    .circle4 {
+        width: 40%;
+        height: 20%;
+        background: rgba(0, 179, 255, 0.5);
+        border-radius: 100%;
+        position: absolute;
+        top: 11%;
+        left: 83%;
+        transform: translate(-50%, -50%);
+        animation: pulse 3s infinite ease-in-out;
+    } */
+
 
     body {
         color: black;
@@ -157,6 +197,10 @@
         transition: all 0.5s ease;
     } 
 
+    mark:hover{
+        color:red;
+    }
+
     #home , #project , #about ,#contact{
         height:100vh;
         display:flex;
@@ -217,11 +261,6 @@
         box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.1);
         cursor:pointer;
         color:black;
-
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
     }
 
     #home button:hover {
@@ -234,19 +273,6 @@
         box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.1);
     }
 
-    #home button span{
-        right: -1.5em; 
-        opacity: 0;
-        transform: translateX(-5px);
-        transition: all 0.3s ease;
-        color: black; 
-        font-size: 1em;
-    }
-
-    #home button:hover span{
-        opacity: 1;
-        transform: translateX(0);
-    }
 
     #project .filter_btn {
         border: none;
@@ -523,7 +549,10 @@
     </style>
 </head>
 <body>
-    <div class="background_pattern"></div>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
 
     <header>
             <nav id="menu" >
@@ -550,7 +579,7 @@
             <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Welcome to <mark>Fadlan server</mark></h1>
             <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="400">your gateway to my digital works</p>
                 <a href="#project" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="800">        
-                <a href="#project" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="800"><button>Get Started <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span> </button></a>
+                <a href="#project" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="800"><button>Get Started</button></a>
         </section>
 
         <section id="project">
@@ -615,7 +644,11 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Fadlan Server. All rights reserved.</p>
+        <div class="footer_container">
+                <a class="active" href="#home"><i class="fa-solid fa-code"></i><mark>Fadlan Server</mark></a>
+                <hr>
+                <p>&copy; 2025 Fadlan Server. All rights reserved.</p>
+        </div>
     </footer>
 
 <script>
@@ -647,7 +680,7 @@
             x.style.display = "block";
         }
     }
-
+    
     const body = document.body;
     const btn = document.getElementById("btn");
     btn.addEventListener("click", function(){
@@ -659,11 +692,6 @@
             btn.innerHTML = '<i class="fa-solid fa-moon"></i> Theme';
         }
     });
-
-    document.addEventListener("mousemove", e => {
-    document.querySelector(".background_pattern").style.setProperty("--x", e.clientX + "px");
-    document.querySelector(".background_pattern").style.setProperty("--y", e.clientY + "px");
-});
 </script>    
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
