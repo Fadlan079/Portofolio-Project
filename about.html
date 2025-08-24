@@ -121,14 +121,14 @@
     #profile, #tentang_saya, #skill, #journey,#showcase,#visi{
         background-color: #F5F5F5;
         width: 70%;
-        margin: 10em auto;
+        margin: 7em auto;
         border-radius: 0.5em;
         padding: 5em;
         box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
     }
 
     #tentang_saya, #skill, #journey,#showcase,#visi{
-        margin-top: -9em;
+        margin-top: -6em;
     }
 
     #profile .grid{
@@ -264,6 +264,105 @@
     footer li{
         list-style: none;
     }
+
+    @media screen and (max-width: 720px) {
+        #menu{
+            width:100%;
+            position:fixed;
+            top:0rem;
+            left:0rem;
+            z-index: 1;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #f5f5f5;
+            position: relative;
+            width:100%;
+            display:block;
+        }
+
+        .topnav #myLinks {
+            display: none;
+        }
+
+        .topnav a {
+            color: #1a1a1a;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            display: block;
+        }
+
+        .topnav a.icon {
+            background: transparent;
+            color: #1a1a1a;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .topnav a:hover {
+            background-color: #1a1a1a;;
+            color: #f5f5f5;
+        }
+
+        .active {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        mark{
+            z-index: 0;
+            padding: 0.2em;
+        }
+
+        #profile, #tentang_saya, #skill, #journey, #showcase,#visi{
+            overflow: hidden;
+            width:80%;
+            padding:1em;
+        }
+
+        #profile .grid {
+            display: block;
+        }
+
+        #profile img{
+            width:70%;
+            padding: 1em;
+            margin: 1em;
+        }
+
+        #skill article{
+            display: block;
+            padding: 0.7em;
+            margin: 0.6em;
+        }
+
+        #skill .grid {
+            display: block;
+            width: 90%;
+        }
+
+        #showcase .grid{
+            display: block;
+            width: 100%;
+        }
+
+        #tentang_saya p,#profile p, #journey p, #visi li{
+            font-size: 0.8em;
+        }
+
+        .on{
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        footer p{
+            font-size: 1em;
+        }
+    }
     </style>
 </head>
 <body>
@@ -274,7 +373,7 @@
                 <div id="myLinks"> 
                     <a href="index.php"><i class="fa-solid fa-house"></i>
                     <span>Home</span> </a>   
-                    <a href="#project"><i class="fa-solid fa-folder-open"></i>
+                    <a href="project.html"><i class="fa-solid fa-folder-open"></i>
                     <span>Project</span></a>
                     <a class="on" href="about.html"><i class="fa-solid fa-user" ></i>
                     <span>About</span></a>
@@ -485,7 +584,6 @@
             </div>
             <div>
                 <h3>Mari Terhubung</h3>
-                <p><i><strong>"Hidup ini seperti coding. lebih banyak else daripada if yang di harapkan."</strong></i></p>
                 <a class="github" href="https://github.com/Fadlan079" target="_self"><i class="fa-brands fa-github"></i></a>
                 <a class="email" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWstptjhccStvXLcpRwqBXlZvFNkHJRlQMXlVcvjHsLhBBkwwwJdjpsgMWfhhxBwnzLNLqHNb" target="_self"><i class="fa-solid fa-envelope"></i></a>
                 <a class="linkedin" href="#" target="_self"><i class="fa-brands fa-linkedin"></i></a>

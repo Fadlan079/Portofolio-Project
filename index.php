@@ -47,7 +47,13 @@
         transition: all 0.5s ease;
     }
 
-    body.dark #menu, body.dark #home, body.dark footer{
+    body.dark header{
+        background-color: #F5F5F5;
+        transition: all 0.5s ease;
+    }
+
+
+    body.dark #menu, body.dark #home, body.dark #ringkasan_project,body.dark #ringkasan_about,body.dark footer{
         color: #F5F5F5;
         background-color: #1A1A1A;
         transition: all 0.5s ease;
@@ -65,12 +71,12 @@
         transition: all 0.5s ease;
     }
 
-    body.dark header nav a, body.dark footer .quick_links a{
+    body.dark header nav a, body.dark footer .quick_links a, body.dark #ringkasan_about a,body.dark #ringkasan_project a{
         color: #F5F5F5;
         transition: all 0.5s ease;
     }
 
-    body.dark footer .quick_links a:hover{
+    body.dark footer .quick_links a:hover, body.dark #ringkasan_about a:hover,body.dark #ringkasan_project a:hover{
         color:#1A1A1A;
         background-color: #F5F5F5;
         transition: all 0.5s ease;
@@ -89,6 +95,12 @@
         left:0;
         background-color:#F5F5F5;
         width: 100%;
+        z-index: 1;
+    }
+
+    header{
+        background-color: #1a1a1a;
+        padding: 1em 0;
     }
     
     header nav {
@@ -122,6 +134,7 @@
         transition: all 0.5s ease;
         background-color: #1A1A1A;
         color: #F5F5F5;
+        z-index: 0;
     } 
 
     .on{
@@ -130,10 +143,10 @@
         padding-bottom:1.1em;
     }
 
-    #home{
+    #home, #ringkasan_project, #ringkasan_about{
         background-color: #F5F5F5;
         width: 70%;
-        margin: 10em auto;
+        margin: 7em auto;
         border-radius: 0.5em;
         padding: 5em;
         box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
@@ -141,6 +154,10 @@
         flex-direction:column;
         justify-content:center;
         align-items:center;
+    }
+
+    #ringkasan_project, #ringkasan_about{
+        margin-top: -6em;
     }
 
     #home h1 {
@@ -166,7 +183,26 @@
         box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.3);
     }
 
-    footer a{
+    #ringkasan_project .grid{
+        display:flex;
+    }
+
+    #ringkasan_project article{
+        box-shadow: 0 0.5em 1em rgba(0,0,0,0.3); 
+        border-radius: 0.5em;
+        overflow: hidden;
+        margin: 1em;
+    }
+
+    #ringkasan_project img{
+        width: 100%;
+    }
+
+    #ringkasan_project .deskripsi{
+        padding:1em;
+    }
+
+    footer a, #ringkasan_about a,#ringkasan_project a{
         display: inline-block;
         text-decoration: none;
         padding: 0.5em;
@@ -178,7 +214,7 @@
         box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
     }
 
-    footer a:hover{
+    footer a:hover, #ringkasan_about a:hover,#ringkasan_project a:hover{
         transform: translateY(-5px);
         background-color: white;
         box-shadow: 0 0.5em 1em rgba(0,0,0,0.3); 
@@ -218,12 +254,12 @@
         text-align: center;
     }
 
-    footer .quick_links a{
+    footer .quick_links a, #ringkasan_about a,#ringkasan_project a{
         color: black;
         width: 7em;
     }
 
-    footer .quick_links a:hover{   
+    footer .quick_links a:hover, #ringkasan_about a:hover,#ringkasan_project a:hover{   
         color: #F5F5F5;
         background-color: #1A1A1A;
     }
@@ -235,15 +271,15 @@
     @media screen and (max-width: 720px) {
         #menu{
             width:100%;
-            position:absolute;
+            position:fixed;
             top:0rem;
             left:0rem;
-     
+            z-index: 1;
         }
 
         .topnav {
             overflow: hidden;
-            background-color: rgba(0, 0, 0, 1);
+            background-color: #f5f5f5;
             position: relative;
             width:100%;
             display:block;
@@ -254,7 +290,7 @@
         }
 
         .topnav a {
-            color: white;
+            color: #1a1a1a;
             padding: 14px 16px;
             text-decoration: none;
             font-size: 17px;
@@ -263,6 +299,7 @@
 
         .topnav a.icon {
             background: transparent;
+            color: #1a1a1a;
             display: block;
             position: absolute;
             right: 0;
@@ -270,16 +307,43 @@
         }
 
         .topnav a:hover {
-            background-color: #ddd;
-            color: black;
+            background-color: #1a1a1a;;
+            color: #f5f5f5;
         }
 
         .active {
-            background-color: rgba(0, 0, 0, 1);
-            color: white;
+            background-color: #f5f5f5;
+            color: #1a1a1a;
         }
 
-        #home h1{
+        #home h1, #ringkasan_about h2, #ringkasan_project h2{
+            font-size: 1em;
+        }
+
+        #ringkasan_about p, #ringkasan_project p{
+            font-size:0.8em;
+        }
+
+        mark{
+            z-index: 0;
+            padding: 0.2em;
+        }
+
+        #home, #ringkasan_about, #ringkasan_project{
+            width:80%;
+            padding:1em;
+        }
+
+        #ringkasan_project .grid{
+            display:block;
+        }
+
+        .on{
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        footer p{
             font-size: 1em;
         }
 
@@ -288,31 +352,66 @@
 </head>
 <body>
     <header>
-            <nav id="menu" >
-                <div class="topnav">
-                    <a class="active" href="#home"><i class="fa-solid fa-code"></i><mark>Fadlan Server</mark></a>
-                    <div id="myLinks">  
-                        <a class="on" href="index.php"><i class="fa-solid fa-house"></i>
-                        <span>Home</span></a>
-                        <a href="#project"><i class="fa-solid fa-folder-open"></i>
-                        <span>Project</span></a>
-                        <a href="about.html"><i class="fa-solid fa-user" ></i>
-                        <span>About</span></a>
-                        <a href="#contact"><i class="fa-solid fa-phone"></i>
-                        <span>Contact</span></a>
-                        <a id="btn"><i class="fa-solid fa-moon"></i>Theme</a>  
-                    </div>
-                    <a href="javascript:void(0);" class="icon" onclick="myfunction()">
-                    <i class="fa fa-bars"></i>
-                    </a>
-                </div>  
-            </nav>
-    </header>    
-    <main>
+        <nav id="menu" >
+            <div class="topnav">
+                <a class="active" href="#home"><i class="fa-solid fa-code"></i><mark>Fadlan Server</mark></a>
+                <div id="myLinks">  
+                    <a class="on" href="index.php"><i class="fa-solid fa-house"></i>
+                    <span>Home</span></a>
+                    <a href="project.html"><i class="fa-solid fa-folder-open"></i>
+                    <span>Project</span></a>
+                    <a href="about.html"><i class="fa-solid fa-user" ></i>
+                    <span>About</span></a>
+                    <a href="#contact"><i class="fa-solid fa-phone"></i>
+                    <span>Contact</span></a>
+                    <a id="btn"><i class="fa-solid fa-moon"></i>Theme</a>  
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myfunction()">
+                <i class="fa fa-bars"></i>
+                </a>
+            </div>  
+        </nav>
         <section id="home">
             <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Welcome to <mark>Fadlan server</mark></h1>
             <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="400">your gateway to my digital works</p>
             <a href="">Get Started</a></a>
+        </section>
+    </header>    
+    <main>
+        <section id="ringkasan_about">
+            <h2>About Me</h2>
+            <p>Lulusan Ilmu Komputer dengan fokus pada pengembangan web, menguasai Python, PHP, JavaScript, HTML, dan CSS. Berpengalaman membangun proyek nyata melalui akademik dan magang.....</p>
+            <a href="about.html"><b>Learn More <i class="fa-solid fa-arrow-right"></i></b></a>
+        </section>
+        <section id="ringkasan_project">
+            <h2>My Projects</h2>
+            <div class="grid">
+                <article>
+                    <img src="ilustration.jpg" alt="ilustration">
+                    <div class="deskripsi">
+                        <h5>Contoh proyek</h5>
+                        <p>Autentikasi dasar dengan hashing, session, dan validasi form server-side.</p>
+                        <a href="#"><i class="fa-solid fa-link"></i> Lihat Repo</a>
+                    </div>
+                </article>
+                <article>
+                    <img src="ilustration.jpg" alt="ilustration">
+                    <div class="deskripsi">
+                        <h5>Contoh proyek</h5>
+                        <p>Autentikasi dasar dengan hashing, session, dan validasi form server-side.</p>
+                        <a href="#"><i class="fa-solid fa-link"></i> Lihat Repo</a>
+                    </div>
+                </article>
+                <article>
+                    <img src="ilustration.jpg" alt="ilustration">
+                    <div class="deskripsi">
+                        <h5>Contoh proyek</h5>
+                        <p>Autentikasi dasar dengan hashing, session, dan validasi form server-side.</p>
+                        <a href="#"><i class="fa-solid fa-link"></i> Lihat Repo</a>
+                    </div>
+                </article>
+            </div>
+            <a href="project.html"><b>Learn More <i class="fa-solid fa-arrow-right"></i></b></a>
         </section>
     </main>
     <footer>
@@ -346,7 +445,6 @@
             </div>
             <div>
                 <h3>Mari Terhubung</h3>
-                <p><i><strong>"Hidup ini seperti coding. lebih banyak else daripada if yang di harapkan."</strong></i></p>
                 <a class="github" href="https://github.com/Fadlan079" target="_self"><i class="fa-brands fa-github"></i></a>
                 <a class="email" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWstptjhccStvXLcpRwqBXlZvFNkHJRlQMXlVcvjHsLhBBkwwwJdjpsgMWfhhxBwnzLNLqHNb" target="_self"><i class="fa-solid fa-envelope"></i></a>
                 <a class="linkedin" href="#" target="_self"><i class="fa-brands fa-linkedin"></i></a>
@@ -376,12 +474,12 @@
     setInterval(changeword,2000);
 
     function myfunction() {
-        var x = document.getElementById("myLinks");
-        x.classList.toggle("show");
-        if (x.style.display === "block") {
-            x.style.display = "none";
+        var a = document.getElementById("myLinks");
+        a.classList.toggle("show");
+        if (a.style.display === "block") {
+            a.style.display = "none";
         }else {
-            x.style.display = "block";
+            a.style.display = "block";
         }
     }
     
