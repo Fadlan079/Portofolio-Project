@@ -268,7 +268,112 @@
         list-style: none;
     }
 
+    @media screen and (min-width:721px) and (max-width:1024px){
+        body.dark .topnav, body.dark .on, body.dark .active, body.dark .topnav a{
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            transition: all 0.5s ease;
+        }
+
+        body.dark  .topnav a:hover {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        #menu{
+            width:100%;
+            position:fixed;
+            top:0rem;
+            left:0rem;
+            z-index: 1;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #f5f5f5;
+            position: relative;
+            width:100%;
+            display:block;
+        }
+
+        .topnav #myLinks {
+            display: none;
+        }
+
+        .topnav a {
+            color: #1a1a1a;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            display: block;
+        }
+
+        .topnav a:hover {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+
+        .topnav a.icon {
+            background: transparent;
+            color: #1a1a1a;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .active {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        #home h1, #ringkasan_about h2, #ringkasan_project h2{
+            font-size: 1em;
+        }
+
+        #ringkasan_about p, #ringkasan_project p{
+            font-size:0.8em;
+        }
+
+        mark{
+            z-index: 0;
+            padding: 0.2em;
+        }
+
+        #home, #ringkasan_about, #ringkasan_project{
+            width:80%;
+            padding:1em;
+        }
+
+        #ringkasan_project .grid{
+            display:block;
+            width:60%;
+            margin: 0 auto;
+        }
+
+        .on{
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        footer p{
+            font-size: 1em;
+        }
+
+    }
+
     @media screen and (max-width: 720px) {
+        body.dark .topnav, body.dark .on, body.dark .active, body.dark .topnav a{
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            transition: all 0.5s ease;
+        }
+
+        body.dark  .topnav a:hover {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
         #menu{
             width:100%;
             position:fixed;

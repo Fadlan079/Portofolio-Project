@@ -20,6 +20,35 @@
         background-color: white;
         overflow-x:hidden
     }
+
+    body.dark{
+        background-color: black;
+        transition: all 0.5s ease;
+    }
+
+    body.dark header{
+        background-color: #F5F5F5;
+        transition: all 0.5s ease;
+    }
+
+    body.dark #intro,body.dark #showcase{
+        background-color: #1a1a1a;
+        color: #F5F5F5;
+        transition: all 0.5s ease;
+    }
+
+    body.dark #showcase a, body.dark #showcase button{
+        background-color: #1A1A1A;
+        color: #F5F5F5;
+        transition: all 0.5s ease;
+    }
+
+    body.dark #showcase a:hover, body.dark #showcase button:hover{
+        background-color: #F5F5F5;
+        color: #1A1A1A;
+        transition: all 0.5s ease;
+    }
+
     #menu{
         display:block;
         position:fixed;
@@ -130,7 +159,31 @@
         box-shadow: 0 0.5em 1em rgba(0,0,0,0.3);    
     }
 
-    @media screen and (max-width: 720px) {
+    #showcase button{
+        border:none;
+        background-color: #F5F5F5;
+        color: #1A1A1A;
+        box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);   
+        padding: 1em;
+        margin: 1em;
+        font-weight: bold;
+        border-radius: 0.5em;
+        transition: all 0.5s ease;
+    }
+
+    #showcase button:hover{
+        background-color: #1A1A1A;
+        color: #F5F5F5;
+        transform: translateY(-5px);
+        box-shadow: 0 0.5em 1em rgba(0,0,0,0.3);   
+    }
+
+    @media screen and (min-width:721px) and (max-width:1024px){
+        body.dark .topnav, body.dark .on, body.dark .active, body.dark .topnav a{
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            transition: all 0.5s ease;
+        }
         #menu{
             width:100%;
             position:fixed;
@@ -186,6 +239,96 @@
         .on{
             background-color: #f5f5f5;
             color: #1a1a1a;
+        }
+
+        #intro, #showcase{
+            width:80%;
+            padding:1em;
+        }
+
+        #showcase .grid{
+            display: block;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        footer p{
+            font-size: 1em;
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body.dark .topnav, body.dark .on, body.dark .active, body.dark .topnav a{
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            transition: all 0.5s ease;
+        }
+
+        body.dark  .topnav a:hover {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        #menu{
+            width:100%;
+            position:fixed;
+            top:0rem;
+            left:0rem;
+            z-index: 1;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #f5f5f5;
+            position: relative;
+            width:100%;
+            display:block;
+        }
+
+        .topnav #myLinks {
+            display: none;
+        }
+
+        .topnav a {
+            color: #1a1a1a;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            display: block;
+        }
+
+        .topnav a.icon {
+            background: transparent;
+            color: #1a1a1a;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .topnav a:hover {
+            background-color: #1a1a1a;;
+            color: #f5f5f5;
+        }
+
+        .active {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        mark{
+            z-index: 0;
+            padding: 0.2em;
+        }
+
+        .on{
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        #intro, #showcase{
+            width:80%;
+            padding:1em;
         }
 
         footer p{
