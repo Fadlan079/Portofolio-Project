@@ -22,26 +22,16 @@
     }
 
     body.dark{
-        background-color: black;
+        background-color: #1a1a1a;
         transition: all 0.5s ease;
     }
 
-    body.dark header{
-        background-color: #F5F5F5;
-        transition: all 0.5s ease;
-    }
-
-    body.dark #intro,body.dark #showcase{
+    body.dark #intro,body.dark #showcase,body.dark #menu , body.dark #menu a,body.dark #showcase a, body.dark #showcase button,body.dark .deskripsi{
         background-color: #1a1a1a;
         color: #F5F5F5;
         transition: all 0.5s ease;
     }
 
-    body.dark #showcase a, body.dark #showcase button{
-        background-color: #1A1A1A;
-        color: #F5F5F5;
-        transition: all 0.5s ease;
-    }
 
     body.dark #showcase a:hover, body.dark #showcase button:hover{
         background-color: #F5F5F5;
@@ -99,28 +89,19 @@
         padding-bottom:1.1em;
     }
 
-    header{
-        background-color: #1A1A1A;
-        padding: 1em 0;
-    }
-
     #intro, #showcase{
-        background-color: #F5F5F5;
-        width: 70%;
-        margin: 7em auto;
-        border-radius: 0.5em;
-        padding: 5em;
-        box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+        height: 100vh;
         display:flex;
+        margin:10em;
+        padding: 2em;
         flex-direction:column;
         justify-content:center;
         align-items:center;
     }
 
-    #showcase{
-        margin-top: -6em;
+    #intro{
+        margin-top:-5em;
     }
-
     
     #showcase .grid{
         display:flex;
@@ -241,11 +222,6 @@
             color: #1a1a1a;
         }
 
-        #intro, #showcase{
-            width:80%;
-            padding:1em;
-        }
-
         #showcase .grid{
             display: block;
             width: 60%;
@@ -326,9 +302,8 @@
             color: #1a1a1a;
         }
 
-        #intro, #showcase{
-            width:80%;
-            padding:1em;
+        #showcase .grid{
+            display: block;
         }
 
         footer p{
@@ -353,6 +328,7 @@
                     <a href="#contact"><i class="fa-solid fa-phone"></i>
                     <span>Contact</span></a>
                     <a id="btn"><i class="fa-solid fa-moon"></i>Theme</a>  
+                    <a href="#">Login <i class="fa-solid fa-right-to-bracket"></i></a>
                 </div>
                 <a href="javascript:void(0);" class="icon" onclick="myfunction()">
                 <i class="fa fa-bars"></i>
@@ -377,9 +353,9 @@
                 <div class="project">
                     <img src="ilustration.jpg" alt="project">
                     <div class="deskripsi">
-                        <h5>Sistem Login (PHP + MySQL)</h5>
-                        <p>Autentikasi dasar dengan hashing, session, dan validasi form server-side.</p>
-                        <a href=""><i class="fa-solid fa-link"></i> Lihat Repo</a>
+                        <h5>Form PHP</h5>
+                        <p>Soal Praketek (Percabangan)</p>
+                        <a href="decision.php"><i class="fa-solid fa-link"></i> Lihat Repo</a>
                     </div>
                 </div>
                 <div class="project">

@@ -21,7 +21,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fadlan Server</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
@@ -97,11 +96,6 @@
         width: 100%;
         z-index: 1;
     }
-
-    header{
-        background-color: #1a1a1a;
-        padding: 1em 0;
-    }
     
     header nav {
         overflow: visible;
@@ -144,20 +138,11 @@
     }
 
     #home, #ringkasan_project, #ringkasan_about{
-        background-color: #F5F5F5;
-        width: 70%;
-        margin: 7em auto;
-        border-radius: 0.5em;
-        padding: 5em;
-        box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+        height:100vh;
         display:flex;
         flex-direction:column;
         justify-content:center;
         align-items:center;
-    }
-
-    #ringkasan_project, #ringkasan_about{
-        margin-top: -6em;
     }
 
     #home h1 {
@@ -178,9 +163,15 @@
     }
 
     #home a:hover {
+        background-color: #1a1a1a;
+        color: #f5f5f5;
         transition: all 0.5s ease;
         transform:translateY(-5px);
         box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.3);
+    }
+
+    #ringkasan_project{
+        margin:10em;
     }
 
     #ringkasan_project .grid{
@@ -327,7 +318,7 @@
             color: #1a1a1a;
         }
 
-        #home h1, #ringkasan_about h2, #ringkasan_project h2{
+        #ringkasan_about h2, #ringkasan_project h2{
             font-size: 1em;
         }
 
@@ -338,11 +329,6 @@
         mark{
             z-index: 0;
             padding: 0.2em;
-        }
-
-        #home, #ringkasan_about, #ringkasan_project{
-            width:80%;
-            padding:1em;
         }
 
         #ringkasan_project .grid{
@@ -421,7 +407,11 @@
             color: #1a1a1a;
         }
 
-        #home h1, #ringkasan_about h2, #ringkasan_project h2{
+        #home h1{
+            font-size: 2em;
+        }
+
+        #ringkasan_about h2, #ringkasan_project h2{
             font-size: 1em;
         }
 
@@ -432,11 +422,6 @@
         mark{
             z-index: 0;
             padding: 0.2em;
-        }
-
-        #home, #ringkasan_about, #ringkasan_project{
-            width:80%;
-            padding:1em;
         }
 
         #ringkasan_project .grid{
@@ -470,6 +455,7 @@
                     <a href="#contact"><i class="fa-solid fa-phone"></i>
                     <span>Contact</span></a>
                     <a id="btn"><i class="fa-solid fa-moon"></i>Theme</a>  
+                    <a href="#">Login <i class="fa-solid fa-right-to-bracket"></i></a>
                 </div>
                 <a href="javascript:void(0);" class="icon" onclick="myfunction()">
                 <i class="fa fa-bars"></i>
