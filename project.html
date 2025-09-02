@@ -22,7 +22,7 @@
     }
 
     body.dark{
-        background-color: #1a1a1a;
+        background-color: black;
         transition: all 0.5s ease;
     }
 
@@ -89,24 +89,26 @@
         padding-bottom:1.1em;
     }
 
-    #intro, #showcase{
-        height: 100vh;
+    h1{
+        text-align: center;
+        margin-top: 3em;
+    }
+
+    #showcase{
         display:flex;
-        margin:10em;
+        margin: 0 10em;
         padding: 2em;
+        border-radius: 0.5em;
+        box-shadow: 0 0.5em 1em rgba(0,0,0,0.3);
         flex-direction:column;
         justify-content:center;
         align-items:center;
     }
-
-    #intro{
-        margin-top:-5em;
-    }
     
     #showcase .grid{
         display:flex;
-    }
 
+    }
     #showcase .project{
         box-shadow: 0 0.5em 1em rgba(0,0,0,0.3); 
         border-radius: 0.5em;
@@ -317,9 +319,9 @@
     <header>
         <nav id="menu" >
             <div class="topnav">
-                <a class="active" href="#home"><i class="fa-solid fa-code"></i><mark>Fadlan Server</mark></a>
+                <a class="active" href="#home"><i class="fa-solid fa-code"></i><mark>Fadlan Server</></mark></a>
                 <div id="myLinks">  
-                    <a href="index.php"><i class="fa-solid fa-house"></i>
+                    <a  href="index.php"><i class="fa-solid fa-house"></i>
                     <span>Home</span></a>
                     <a class="on" href="project.html"><i class="fa-solid fa-folder-open"></i>
                     <span>Project</span></a>
@@ -335,14 +337,10 @@
                 </a>
             </div>  
         </nav>
-        <section id="intro">
-            <h1>My Project</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </section>
-    </header>   
+    </header>
     <main>
+        <h1>My Project</h1>
         <section id="showcase">
-            <h3>Cuplikan Proyek</h3>
             <div class="filter">
                 <button>All</button>
                 <button>Web</button>
@@ -430,5 +428,7 @@
     <script>
         AOS.init();
     </script>
+
+    
 </body>
 </html>

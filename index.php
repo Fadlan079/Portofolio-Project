@@ -21,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fadlan Server</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
@@ -37,7 +38,7 @@
         padding: 0;
         font-family:sans-serif;
         transition: all 0.5s ease;
-        background-color: white;
+        background-color: #0c0b0bff;
         overflow-x:hidden
     }
     
@@ -92,7 +93,7 @@
         position:fixed;
         top:0;
         left:0;
-        background-color:#F5F5F5;
+        background-color: #090909ff;
         width: 100%;
         z-index: 1;
     }
@@ -108,7 +109,7 @@
         padding: 1rem 1rem 1rem 1rem;
         margin-right:2rem;
         font-weight:bold;
-        color: black;
+        color: white;
     }
 
     .topnav {
@@ -124,10 +125,10 @@
 
     mark{
         border-radius:0.5em;
-        padding:0.5em;
+        padding:0.6em;
         transition: all 0.5s ease;
-        background-color: #1A1A1A;
-        color: #F5F5F5;
+        background:transparent;
+        color: #1a1a1a;
         z-index: 0;
     } 
 
@@ -138,16 +139,21 @@
     }
 
     #home, #ringkasan_project, #ringkasan_about{
-        height:100vh;
+        height:70vh;
         display:flex;
         flex-direction:column;
         justify-content:center;
         align-items:center;
+        background-color: #fbf6f6ff;
+        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.2);
+        width:70%;
+        margin: 1.5em auto;
     }
 
     #home h1 {
         font-weight:bold;
         font-size: 3em;
+        color: #331818ff;
     }
 
     #home a{
@@ -444,7 +450,7 @@
     <header>
         <nav id="menu" >
             <div class="topnav">
-                <a class="active" href="#home"><i class="fa-solid fa-code"></i><mark>Fadlan Server</mark></a>
+                <a class="active" href="#home"><i class="fa-solid fa-code"></i><mark>Fadlan Server</></mark></a>
                 <div id="myLinks">  
                     <a class="on" href="index.php"><i class="fa-solid fa-house"></i>
                     <span>Home</span></a>
@@ -455,7 +461,7 @@
                     <a href="#contact"><i class="fa-solid fa-phone"></i>
                     <span>Contact</span></a>
                     <a id="btn"><i class="fa-solid fa-moon"></i>Theme</a>  
-                    <a href="#">Login <i class="fa-solid fa-right-to-bracket"></i></a>
+                    <a href="CRUD/Create.php">Login <i class="fa-solid fa-right-to-bracket"></i></a>
                 </div>
                 <a href="javascript:void(0);" class="icon" onclick="myfunction()">
                 <i class="fa fa-bars"></i>
@@ -463,7 +469,7 @@
             </div>  
         </nav>
         <section id="home">
-            <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Welcome to <mark>Fadlan server</mark></h1>
+            <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Welcome to my<mark></mark></h1>
             <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="400">your gateway to my digital works</p>
             <a href="">Get Started</a></a>
         </section>
@@ -546,12 +552,11 @@
     </footer>
 <script>
     const words = [
-        "Fadlan Server",
-        "Discover More",
-        "Stay Inspired",
-        "Beyond Limits",
-        "Bright Ideas",
-        "Innovation Hub"
+        "server",
+        "project",
+        "galery",
+        "website",
+        "works",
     ];
 
     let i = 0;

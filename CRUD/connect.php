@@ -1,8 +1,8 @@
-<?php 
-$host = "localhost";
-$user = "root";
-$password = "";
-$db = "stationary";
+<?php
+$host="localhost";
+$user="root";
+$password="";
+$db="signin";
 
 $kon =mysqli_connect($host,$user,$password,$db);
 if (!$kon){
