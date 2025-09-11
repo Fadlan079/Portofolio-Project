@@ -1,599 +1,146 @@
-<?php
-    if (! empty($_GET['q'])) {
-        $query = htmlspecialchars($_GET['q'], ENT_QUOTES, 'UTF-8');
-
-        switch ($query) {
-            case 'info':
-                phpinfo();
-                exit;
-            default:
-                header("HTTP/1.0 404 Not Found");
-                echo "Invalid query parameter.";
-                exit;
-        }
-    }
-?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth scroll-pt-20">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fadlan Server</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="/src/css/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
-    html,
-
-    html{
-        font-size:16px;
-        overflow-x: hidden;
-    }
-
-    body {
-        color: black;
-        margin: 0;
-        padding: 0;
-        font-family:sans-serif;
-        transition: all 0.5s ease;
-        background-color: #0c0b0bff;
-        overflow-x:hidden
-    }
-    
-    body.dark{
-        background-color: black;
-        transition: all 0.5s ease;
-    }
-
-    body.dark header{
-        background-color: #F5F5F5;
-        transition: all 0.5s ease;
-    }
-
-
-    body.dark #menu, body.dark #home, body.dark #ringkasan_project,body.dark #ringkasan_about,body.dark footer{
-        color: #F5F5F5;
-        background-color: #1A1A1A;
-        transition: all 0.5s ease;
-    }
-
-    body.dark .on{
-        color: #1A1A1A;
-        background-color: #F5F5F5;
-        transition: all 0.5s ease;
-    }
-
-    body.dark mark{
-        background-color: #F5F5F5;
-        color: #1A1A1A;
-        transition: all 0.5s ease;
-    }
-
-    body.dark header nav a, body.dark footer .quick_links a, body.dark #ringkasan_about a,body.dark #ringkasan_project a{
-        color: #F5F5F5;
-        transition: all 0.5s ease;
-    }
-
-    body.dark footer .quick_links a:hover, body.dark #ringkasan_about a:hover,body.dark #ringkasan_project a:hover{
-        color:#1A1A1A;
-        background-color: #F5F5F5;
-        transition: all 0.5s ease;
-    }
-
-    body.dark #home a{
-        background-color: #1A1A1A;
-        color: #F5F5F5;
-        transition: all 0.5s ease;
-    }
-
-    #menu{
-        display:block;
-        position:fixed;
-        top:0;
-        left:0;
-        background-color: #090909ff;
-        width: 100%;
-        z-index: 1;
-    }
-    
-    header nav {
-        overflow: visible;
-    }
-
-    header nav a {
-        transition: all 0.5s ease;
-        text-decoration: none;
-        font-family: sans-serif;
-        padding: 1rem 1rem 1rem 1rem;
-        margin-right:2rem;
-        font-weight:bold;
-        color: white;
-    }
-
-    .topnav {
-        display: flex;
-        align-items:center;
-        justify-content: center;
-        width:100%;
-    }
-
-    .icon{
-        display:none;
-    }
-
-    mark{
-        border-radius:0.5em;
-        padding:0.6em;
-        transition: all 0.5s ease;
-        background:transparent;
-        color: #1a1a1a;
-        z-index: 0;
-    } 
-
-    .on{
-        background-color: #1A1A1A;
-        color: #F5F5F5;
-        padding-bottom:1.1em;
-    }
-
-    #home, #ringkasan_project, #ringkasan_about{
-        height:70vh;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        background-color: #fbf6f6ff;
-        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.2);
-        width:70%;
-        margin: 1.5em auto;
-    }
-
-    #home h1 {
-        font-weight:bold;
-        font-size: 3em;
-        color: #331818ff;
-    }
-
-    #home a{
-        background-color: #FDFBF7;
-        border-radius: 0.5em;
-        padding:1.1em;
-        transition: all 0.5s ease;
-        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.2);
-        cursor:pointer;
-        color:black;
-        text-decoration:none;
-        font-weight:bold;
-    }
-
-    #home a:hover {
-        background-color: #1a1a1a;
-        color: #f5f5f5;
-        transition: all 0.5s ease;
-        transform:translateY(-5px);
-        box-shadow: 0 0.40em 0.50em rgba(0, 0, 0, 0.3);
-    }
-
-    #ringkasan_project{
-        margin:10em;
-    }
-
-    #ringkasan_project .grid{
-        display:flex;
-    }
-
-    #ringkasan_project article{
-        box-shadow: 0 0.5em 1em rgba(0,0,0,0.3); 
-        border-radius: 0.5em;
-        overflow: hidden;
-        margin: 1em;
-    }
-
-    #ringkasan_project img{
-        width: 100%;
-    }
-
-    #ringkasan_project .deskripsi{
-        padding:1em;
-    }
-
-    footer a, #ringkasan_about a,#ringkasan_project a{
-        display: inline-block;
-        text-decoration: none;
-        padding: 0.5em;
-        margin: 0.3em;
-        border-radius: 0.3em;
-        color: white;
-        transition: all 0.5s ease;
-        cursor: pointer;
-        box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
-    }
-
-    footer a:hover, #ringkasan_about a:hover,#ringkasan_project a:hover{
-        transform: translateY(-5px);
-        background-color: white;
-        box-shadow: 0 0.5em 1em rgba(0,0,0,0.3); 
-    }
-
-    footer .github{background-color: black;}
-    footer .email{background-color: red;}
-    footer .linkedin{background-color: #0A66C2;}
-
-    footer .github:hover{
-        color: black;
-    }
-
-    footer .email:hover{
-        color: red;
-    }
-
-    footer .linkedin:hover{
-        color: #0A66C2;
-    }
-
-    footer .grid{
-        display:flex;
-        justify-content: space-between;
-        text-align: center;
-    }
-
-    footer{
-        font-size: 0.875em;
-        background-color: #F5F5F5;
-        height: auto;
-        color:  #1A1A1A;
-        padding: 1em;
-    }
-
-    footer p{
-        text-align: center;
-    }
-
-    footer .quick_links a, #ringkasan_about a,#ringkasan_project a{
-        color: black;
-        width: 7em;
-    }
-
-    footer .quick_links a:hover, #ringkasan_about a:hover,#ringkasan_project a:hover{   
-        color: #F5F5F5;
-        background-color: #1A1A1A;
-    }
-
-    footer li{
-        list-style: none;
-    }
-
-    @media screen and (min-width:721px) and (max-width:1024px){
-        body.dark .topnav, body.dark .on, body.dark .active, body.dark .topnav a{
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-            transition: all 0.5s ease;
+        .bg-carbon {
+            background-color: #0a0a0a;
+            background-image:
+                linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,255,255,0.04) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.04) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.04) 75%);
+            background-size: 18px 18px;
+            background-position: 0 0, 0 9px, 9px -9px, -9px 0px;
         }
-
-        body.dark  .topnav a:hover {
-            background-color: #f5f5f5;
-            color: #1a1a1a;
-        }
-
-        #menu{
-            width:100%;
-            position:fixed;
-            top:0rem;
-            left:0rem;
-            z-index: 1;
-        }
-
-        .topnav {
-            overflow: hidden;
-            background-color: #f5f5f5;
-            position: relative;
-            width:100%;
-            display:block;
-        }
-
-        .topnav #myLinks {
-            display: none;
-        }
-
-        .topnav a {
-            color: #1a1a1a;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-            display: block;
-        }
-
-        .topnav a:hover {
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-        }
-
-        .topnav a.icon {
-            background: transparent;
-            color: #1a1a1a;
-            display: block;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
-
-        .active {
-            background-color: #f5f5f5;
-            color: #1a1a1a;
-        }
-
-        #ringkasan_about h2, #ringkasan_project h2{
-            font-size: 1em;
-        }
-
-        #ringkasan_about p, #ringkasan_project p{
-            font-size:0.8em;
-        }
-
-        mark{
-            z-index: 0;
-            padding: 0.2em;
-        }
-
-        #ringkasan_project .grid{
-            display:block;
-            width:60%;
-            margin: 0 auto;
-        }
-
-        .on{
-            background-color: #f5f5f5;
-            color: #1a1a1a;
-        }
-
-        footer p{
-            font-size: 1em;
-        }
-
-    }
-
-    @media screen and (max-width: 720px) {
-        body.dark .topnav, body.dark .on, body.dark .active, body.dark .topnav a{
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-            transition: all 0.5s ease;
-        }
-
-        body.dark  .topnav a:hover {
-            background-color: #f5f5f5;
-            color: #1a1a1a;
-        }
-
-        #menu{
-            width:100%;
-            position:fixed;
-            top:0rem;
-            left:0rem;
-            z-index: 1;
-        }
-
-        .topnav {
-            overflow: hidden;
-            background-color: #f5f5f5;
-            position: relative;
-            width:100%;
-            display:block;
-        }
-
-        .topnav #myLinks {
-            display: none;
-        }
-
-        .topnav a {
-            color: #1a1a1a;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-            display: block;
-        }
-
-        .topnav a.icon {
-            background: transparent;
-            color: #1a1a1a;
-            display: block;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
-
-        .topnav a:hover {
-            background-color: #1a1a1a;;
-            color: #f5f5f5;
-        }
-
-        .active {
-            background-color: #f5f5f5;
-            color: #1a1a1a;
-        }
-
-        #home h1{
-            font-size: 2em;
-        }
-
-        #ringkasan_about h2, #ringkasan_project h2{
-            font-size: 1em;
-        }
-
-        #ringkasan_about p, #ringkasan_project p{
-            font-size:0.8em;
-        }
-
-        mark{
-            z-index: 0;
-            padding: 0.2em;
-        }
-
-        #ringkasan_project .grid{
-            display:block;
-        }
-
-        .on{
-            background-color: #f5f5f5;
-            color: #1a1a1a;
-        }
-
-        footer p{
-            font-size: 1em;
-        }
-
-    }
     </style>
 </head>
-<body>
-    <header>
-        <nav id="menu" >
-            <div class="topnav">
-                <a class="active" href="#home"><i class="fa-solid fa-code"></i><mark>Fadlan Server</></mark></a>
-                <div id="myLinks">  
-                    <a class="on" href="index.php"><i class="fa-solid fa-house"></i>
-                    <span>Home</span></a>
-                    <a href="project.html"><i class="fa-solid fa-folder-open"></i>
-                    <span>Project</span></a>
-                    <a href="about.html"><i class="fa-solid fa-user" ></i>
-                    <span>About</span></a>
-                    <a href="#contact"><i class="fa-solid fa-phone"></i>
-                    <span>Contact</span></a>
-                    <a id="btn"><i class="fa-solid fa-moon"></i>Theme</a>  
-                    <a href="CRUD/Create.php">Login <i class="fa-solid fa-right-to-bracket"></i></a>
+<body class="bg-neutral-950 font-sans">
+    <section class="relative bg-carbon pt-36 pb-20 min-h-145 m-7 rounded-xl">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-950/30 to-neutral-950 rounded-xl"></div>
+            <header class="flex justify-between">
+                <div class="flex relative -top-35 m-3 left-19">
+                    <a href="#home" class="bg-emerald-500 text-neutral-900 p-1 m-px rounded-lg font-bold text-2xl"><i class="fa-solid fa-code"></i></a>
+                    <h3 class="text-neutral-200 font-bold p-1 m-px text-xl">Fadlan Server</h3>
                 </div>
-                <a href="javascript:void(0);" class="icon" onclick="myfunction()">
-                <i class="fa fa-bars"></i>
-                </a>
-            </div>  
-        </nav>
-        <section id="home">
-            <h1 data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="0">Welcome to my<mark></mark></h1>
-            <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="400">your gateway to my digital works</p>
-            <a href="">Get Started</a></a>
-        </section>
-    </header>    
-    <main>
-        <section id="ringkasan_about">
-            <h2>About Me</h2>
-            <p>Lulusan Ilmu Komputer dengan fokus pada pengembangan web, menguasai Python, PHP, JavaScript, HTML, dan CSS. Berpengalaman membangun proyek nyata melalui akademik dan magang.....</p>
-            <a href="about.html"><b>Learn More <i class="fa-solid fa-arrow-right"></i></b></a>
-        </section>
-        <section id="ringkasan_project">
-            <h2>My Projects</h2>
-            <div class="grid">
-                <article>
-                    <img src="ilustration.jpg" alt="ilustration">
-                    <div class="deskripsi">
-                        <h5>Contoh proyek</h5>
-                        <p>Autentikasi dasar dengan hashing, session, dan validasi form server-side.</p>
-                        <a href="#"><i class="fa-solid fa-link"></i> Lihat Repo</a>
+                <nav class="bg-neutral-950/70 px-5 py-6 z-50 fixed w-230 left-1/2 -translate-x-1/2 top-0 rounded-b-3xl shadow backdrop-blur-lg">
+                    <div class="relative top-3 border border-neutral-700 flex justify-between max-w-7xl mx-auto px-6 rounded-xl">
+                        <a href="#project" class="text-neutral-200 hover:text-emerald-500 transition-all duration-300 p-3">Project</a>
+                        <a href="#about" class="text-neutral-200 hover:text-emerald-500 transition-all duration-300 p-3">About</a>
+                        <a href="#" class="text-neutral-200 hover:text-emerald-500 transition-all duration-300 p-3">Contact</a>
                     </div>
-                </article>
-                <article>
-                    <img src="ilustration.jpg" alt="ilustration">
-                    <div class="deskripsi">
-                        <h5>Contoh proyek</h5>
-                        <p>Autentikasi dasar dengan hashing, session, dan validasi form server-side.</p>
-                        <a href="#"><i class="fa-solid fa-link"></i> Lihat Repo</a>
-                    </div>
-                </article>
-                <article>
-                    <img src="ilustration.jpg" alt="ilustration">
-                    <div class="deskripsi">
-                        <h5>Contoh proyek</h5>
-                        <p>Autentikasi dasar dengan hashing, session, dan validasi form server-side.</p>
-                        <a href="#"><i class="fa-solid fa-link"></i> Lihat Repo</a>
-                    </div>
-                </article>
-            </div>
-            <a href="project.html"><b>Learn More <i class="fa-solid fa-arrow-right"></i></b></a>
-        </section>
-    </main>
-    <footer>
-        <div class="grid">
-            <div>
-                <h3>Fadlan Server</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="quick_links">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="index.php"><i class="fa-solid fa-house"></i>
-                            <span>Home</span> </a>   
-                        </li>
-                        <li>
-                            <a href="#project"><i class="fa-solid fa-folder-open"></i>
-                            <span>Project</span></a>
-                        </li>
-                        <li>
-                            <a href="about.html"><i class="fa-solid fa-user" ></i>
-                            <span>About</span></a>
-                        </li>
-                        <li>
-                            <a href="#contact"><i class="fa-solid fa-phone"></i>
-                            <span>Contact</span></a>
-                        </li>
-                    </ul>
                 </nav>
+                <div class="relative -top-37 m-3 right-43">
+                    <span class="relative flex size-3">
+                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75"></span>
+                        <span class="relative inline-flex size-3 rounded-full bg-orange-500"></span>
+                    </span>
+                    <a href="#" class="text-emerald-500 border border-emerald-500 px-5 rounded-md hover:text-neutral-900 hover:bg-emerald-500 transition-all duration-300 p-1">Login</a>
+                </div>
+            </header>
+            <section id="home" class="relative z-20 mx-auto max-w-7xl h-115">
+                <div class="grid grid-cols-3 gap-10">
+                    <div class="col-span-2 m-5 p-5 block justify-center items-center">
+                        <div>
+                            <hr class="border-4 border-emerald-500  rounded-full w-32 mb-3">
+                            <h2 class="font-bold text-neutral-200 text-5xl mb-3">Eksplorasi Karya</h2>
+                            <h2 class="font-bold text-emerald-500 text-5xl mb-3">bernuansa eksklusif</h2>
+                            <p class="font-bold text-neutral-500 mb-3">Halo, saya Fadlan, lulusan Ilmu Komputer dengan minat di web development.
+                            Menguasai Python, PHP, JavaScript, HTML, CSS, serta berpengalaman dengan Laragon.
+                            Siap berkontribusi dan berkembang di bidang software development.</p>
+                        </div>
+                        <div class="flex">
+                            <a href="#" class="bg-orange-500 p-2 m-2 rounded-xl text-neutral-200 font-bold hover:bg-emerald-500 hover:text-neutral-900 hover:scale-105 hover:-translate-y-1 hover:shadow-xl shadow-emerald-900/30 transition-all duration-300">Lihat Proyek <i class="fa-solid fa-right-to-bracket"></i></a>
+                            <a href="#" class="border border-neutral-200 text-neutral-200 p-2 m-2 rounded-xl font-bold hover:border-emerald-500 hover:text-emerald-500 hover:scale-105 hover:-translate-y-1 hover:shadow-xl shadow-emerald-900/30 transition-all duration-300">Hubungi Saya</a>
+                        </div>
+                    </div>
+                    <div class="col-span-1 bg-gradient-to-r from-emerald-950 to-neutral-900 w-90 h-90 backdrop-blur-xl rounded-4xl drop-shadow-xl drop-shadow-emerald-900/30 flex justify-center items-center border border-neutral-800">
+                        <img src="/src/image/foto.png" class="bg-emerald-500/50 w-36 h-36 rounded-3xl shadow-2xl animate-pulse">
+                    </div>
+                </div>
+            </section>
+    </section>
+    <section id="project" class="mx-auto max-w-7xl h-screen">
+        <div class="grid grid-cols-3 gap-10">
+            <div class="col-span-2 m-5 p-5 block text-left">
+                <h2 class="font-bold text-neutral-200 text-5xl mb-3">Project List</h2>
+                <p class="font-bold text-neutral-500">Beberapa proyek yang sedang di kembangkan</p>
             </div>
-            <div>
-                <h3>Mari Terhubung</h3>
-                <a class="github" href="https://github.com/Fadlan079" target="_self"><i class="fa-brands fa-github"></i></a>
-                <a class="email" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWstptjhccStvXLcpRwqBXlZvFNkHJRlQMXlVcvjHsLhBBkwwwJdjpsgMWfhhxBwnzLNLqHNb" target="_self"><i class="fa-solid fa-envelope"></i></a>
-                <a class="linkedin" href="#" target="_self"><i class="fa-brands fa-linkedin"></i></a>
+            <div class="col-span-1 m-5 p-5 block text-right">
+                <a href="#" class="font-bold text-emerald-500 hover:text-orange-500 transition-colors duration-300">Show All</a>
             </div>
         </div>
-        <hr>
-        <p>&copy; 2025 Fadlan. All rights reserved</p>
-    </footer>
-<script>
-    const words = [
-        "server",
-        "project",
-        "galery",
-        "website",
-        "works",
-    ];
+        <div class="grid grid-cols-3 gap-10 mb-20">
+            <a href="#" class="group block">
+                <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
+                    <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
+                    <img src="/src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
+                    <div class="p-7">
+                        <h3 class="text-neutral-300">Judul Proyek</h3>
+                        <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
+                        <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="group block">
+                <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
+                    <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
+                    <img src="/src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
+                    <div class="p-7">
+                        <h3 class="text-neutral-300">Judul Proyek</h3>
+                        <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
+                        <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="group block">
+                <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
+                    <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
+                    <img src="/src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
+                    <div class="p-7">
+                        <h3 class="text-neutral-300">Judul Proyek</h3>
+                        <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
+                        <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
+                    </div>
+                </div>
+            </a>
+        </div>
 
-    let i = 0;
-    const mark =document.getElementsByTagName("mark")[1];
-
-    function changeword(){
-        mark.textContent = words[i];
-        i = (i+1)%words.length;
-    }
-    changeword();
-    setInterval(changeword,2000);
-
-    function myfunction() {
-        var a = document.getElementById("myLinks");
-        a.classList.toggle("show");
-        if (a.style.display === "block") {
-            a.style.display = "none";
-        }else {
-            a.style.display = "block";
-        }
-    }
-    
-    const body = document.body;
-    const btn = document.getElementById("btn");
-    btn.addEventListener("click", function(){
-        body.classList.toggle("dark");
-
-        if (body.classList.contains("dark")) {
-            btn.innerHTML = '<i class="fa-solid fa-sun"></i> Theme';
-        } else {
-            btn.innerHTML = '<i class="fa-solid fa-moon"></i> Theme';
-        }
-    });
-</script>    
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-    AOS.init();
-</script>
+        <div class="grid grid-cols-4 gap-10">
+            <div class="shadow-lg shadow-emerald-900/30 rounded-xl border border-neutral-800 block text-center p-5">
+                <h2 class="font-bold text-emerald-500 text-xl mb-3">15</h2>
+                <p class="text-neutral-500 text-lg">Total Proyek</p>
+            </div>
+                    <div class="shadow-lg shadow-emerald-900/30 rounded-xl border border-neutral-800 block text-center p-5">
+                <h2 class="font-bold text-emerald-500 text-xl mb-3">15</h2>
+                <p class="text-neutral-500 text-lg">Total Proyek</p>
+            </div>
+                    <div class="shadow-lg shadow-emerald-900/30 rounded-xl border border-neutral-800 block text-center p-5">
+                <h2 class="font-bold text-emerald-500 text-xl mb-3">15</h2>
+                <p class="text-neutral-500 text-lg">Total Proyek</p>
+            </div>
+                    <div class="shadow-lg shadow-emerald-900/30 rounded-xl border border-neutral-800 block text-center p-5">
+                <h2 class="font-bold text-emerald-500 text-xl mb-3">15</h2>
+                <p class="text-neutral-500 text-lg">Total Proyek</p>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="mx-auto max-w-5xl h-screen mt-10">
+        <div class="grid grid-cols-2 gap-10">
+            <div class="bg-gradient-to-r from-emerald-950 to-neutral-900 w-70 h-70 backdrop-blur-xl rounded-4xl drop-shadow-xl drop-shadow-emerald-900/30 flex justify-center items-center border border-neutral-800">
+                <img src="/src/image/foto.png" class="w-36 h-36 bg-emerald-500/50 rounded-xl animate-pulse">
+            </div>
+            <div class="m-auto">
+                <h2 class="font-bold text-2xl text-neutral-200">Tentang Saya</h2>
+                <p class="font-bold text-neutral-500 mb-3">Halo, saya Fadlan, lulusan Ilmu Komputer dengan minat di web development.
+                Menguasai Python, PHP, JavaScript, HTML, CSS, serta berpengalaman dengan Laragon.
+                Siap berkontribusi dan berkembang di bidang software development.</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
