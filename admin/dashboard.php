@@ -1,8 +1,8 @@
 <?php 
 session_start();
-$islogin = isset($_SESSION['user']);
-if (isset($_SESSION['user'])){
-    $user = $_SESSION['user'];
+$islogin = isset($_SESSION['users']);
+if (isset($_SESSION['users'])){
+    $user = $_SESSION['users'];
 }else{
     $user = [
         "name" => "Username",
@@ -66,7 +66,7 @@ if (isset($_SESSION['user'])){
             <div class="flex justify-between shadow-xl p-6 rounded bg-neutral-900/30 backdrop-blur-md ">
                 <div>
                     <h1 class="text-emerald-500 text-2xl font-bold">Selamat Datang, <?php echo ucwords($user['name']);?></h1>
-                    <p class="text-neutral-500">Selamat berkreasi di sistem pengelola proyek</p>
+                    <p class="text-neutral-500">Pegang Kendali Penuh proyekmu dengan sistem manajemen yang praktis</p>
                 </div>
                 <div class="flex">
                     <img src="/src/image/foto.png" alt="" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl mr-10 border-2 border-emerald-500">

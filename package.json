@@ -8,5 +8,9 @@
       "./*.{html,php}",
       "./src/**/*.{html,js,php}"
     ]
-  }
+  },
+
+  "scripts": {
+  "dev": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch"
+}
 }
