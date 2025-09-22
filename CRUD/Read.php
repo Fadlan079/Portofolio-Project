@@ -107,7 +107,10 @@ try{
                 <p class="col-span-2 font-bold text-neutral-200 tracking-wide mx-3">"Login untuk mengakses akun anda."</p>
                 <hr class="col-span-2 border border-emerald-500 rounded-full">
                 <input class="col-span-2 bg-neutral-950 text-neutral-400 rounded-xl p-3 border border-neutral-900 focus:outline-none focus:border-orange-500 transition-all duration-300" type="text" name="username"  required placeholder="Nama">
-                <input class="col-span-2 bg-neutral-950 text-neutral-400 p-3 border border-neutral-900 rounded-xl focus:outline-none focus:border-orange-500 transition-all duration-300" type="password" name="password"  required placeholder="Password">
+                <div class="w-full relative col-span-2">
+                    <input id="pass" class="w-full bg-neutral-950 text-neutral-400 p-3 border border-neutral-900 rounded-xl focus:outline-none focus:border-orange-500 transition-all duration-300" type="password" name="password"  required placeholder="Password">
+                    <i id="eye" class="fa-solid fa-eye absolute p-2 top-2 right-6 text-neutral-200"></i>
+                </div>
                 <a href="#" class="col-span-2 text-neutral-400 underline block text-right text-xs">forgot password?</a>
                 <input class="col-span-2 tracking-wide bg-orange-500 p-3 rounded-xl font-bold text-xl text-neutral-200 hover:bg-emerald-500 hover:text-neutral-900  hover:-translate-y-1 hover:shadow-lg shadow-neutral-900/30 transsition-all duration-300" type="submit" value="Login">
                 <hr class="border border-emerald-500 rounded-full">
@@ -118,6 +121,13 @@ try{
             </form>
         </div>
     </div>
+    <script>
+        const eye = document.getElementById("eye");
+        const pass = document.getElementById("pass");
+        eye.addEventListener("click", ()=>{
+            pass.type = pass.type === "password" ? "text" : "password";
+        });
+    </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();

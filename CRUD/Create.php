@@ -72,7 +72,10 @@ try{
                 <hr class="col-span-2 border border-emerald-500 rounded-full">
                 <input class="bg-neutral-950 text-neutral-400 rounded-xl p-3 border border-neutral-800 focus:outline-none focus:border-emerald-500 transition-all duration-300" type="email" name="email" required placeholder="Email">
                 <input class="bg-neutral-950 text-neutral-400 rounded-xl p-3 border border-neutral-800 focus:outline-none focus:border-emerald-500 transition-all duration-300" type="text" name="username"  required placeholder="Username">
-                <input class="col-span-2 bg-neutral-950 text-neutral-400 p-3 border border-neutral-800 rounded-xl focus:outline-none focus:border-emerald-500 transition-all duration-300" type="password" name="password"  required placeholder="Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,16}" title="Password harus 8-16 karakter, minimal 1 huruf besar, 1 huruf kecil, 1 angka, 1 simbol">
+                <div class="w-full relative col-span-2">
+                    <input id="pass" class="w-full bg-neutral-950 text-neutral-400 p-3 border border-neutral-800 rounded-xl focus:outline-none focus:border-emerald-500 transition-all duration-300" type="password" name="password"  required placeholder="Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,16}" title="Password harus 8-16 karakter, minimal 1 huruf besar, 1 huruf kecil, 1 angka, 1 simbol">
+                    <i id="eye" class="fa-solid fa-eye absolute p-2 top-2 right-6 text-neutral-200"></i>
+                </div>
                 <input class="col-span-2 tracking-wide bg-orange-500 p-3 rounded-xl font-bold text-xl text-neutral-200 hover:bg-emerald-500 hover:text-neutral-900  hover:-translate-y-1 hover:shadow-lg shadow-emerald-900/30 transsition-all duration-300" type="submit" value="Register">
                 <hr class="border border-emerald-500 rounded-full">
                 <hr class="border border-emerald-500 rounded-full">
@@ -85,6 +88,13 @@ try{
 
         </div>
     </div>
+    <script>
+        const eye = document.getElementById("eye");
+        const pass = document.getElementById("pass");
+        eye.addEventListener("click", ()=>{
+            pass.type = pass.type === "password" ? "text" : "password";
+        });
+    </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
