@@ -1,5 +1,6 @@
 <?php 
 session_start();
+
 $islogin = isset($_SESSION['users']);
 if (isset($_SESSION['users'])){
     $user = $_SESSION['users'];
@@ -16,7 +17,7 @@ if (isset($_SESSION['users'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Fadlan Server</title>
-    <link rel="stylesheet" href="/src/css/output.css">
+    <link rel="stylesheet" href="../src/css/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
         .bg-carbon {
@@ -38,7 +39,7 @@ if (isset($_SESSION['users'])){
     <header>
         <nav class="flex flex-col w-64 h-screen fixed bg-neutral-900/30 backdrop-blur-md shadow-xl border border-neutral-800 py-2  z-20" >
             <div class="m-4 flex">
-                <img src="/src/image/foto.png" alt="profile" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl border-2 border-emerald-500" >
+                <img src="../src/image/foto.png" alt="profile" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl border-2 border-emerald-500" >
                 <div class="block m-auto">
                     <h3 class=" text-emerald-500 font-bold"><?php echo ucwords($user['name']);?></h3>
                     <p class="text-neutral-500"><?php echo $user['role'];?></p>
@@ -57,7 +58,7 @@ if (isset($_SESSION['users'])){
             <?php else:?>
             <a class="m-3  text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="profile.php"><i class="fa-solid fa-user"></i> Identity</a>
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="preferences.php"><i class="fa-solid fa-gear"></i> Preferences</a>
-            <a class="m-3 bg-orange-500 text-neutral-300 text-xl  block px-4 py-2 rounded shadow-xl hover:bg-emerald-600 hover:scale-105  hover:shadow-xl hover:shadow-emerald-900/30 hover:text-neutral-950 transition-all duration-300" href="/CRUD/Read.php"><i class="fa-solid fa-door-closed"></i> Login</a>
+            <a class="m-3 bg-orange-500 text-neutral-300 text-xl  block px-4 py-2 rounded shadow-xl hover:bg-emerald-600 hover:scale-105  hover:shadow-xl hover:shadow-emerald-900/30 hover:text-neutral-950 transition-all duration-300" href="../CRUD/Read.php"><i class="fa-solid fa-door-closed"></i> Login</a>
             <?php endif;?>
         </nav>
     </header>
@@ -69,7 +70,7 @@ if (isset($_SESSION['users'])){
                     <p class="text-neutral-500">Pegang Kendali Penuh proyekmu dengan sistem manajemen yang praktis</p>
                 </div>
                 <div class="flex">
-                    <img src="/src/image/foto.png" alt="" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl mr-10 border-2 border-emerald-500">
+                    <img src="../src/image/foto.png" alt="" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl mr-10 border-2 border-emerald-500">
                     <div class="block text-right"> 
                         <h3 class="text-emerald-500 text-xl font-bold"><?php echo ucwords($user['name']);?></h3>
                         <p class="text-neutral-500"><?php echo $user['role'];?></p>
@@ -130,21 +131,21 @@ if (isset($_SESSION['users'])){
                 <h3 class="text-neutral-300 font-bold"><i class="fa-solid fa-bell"></i> Notifications</h3>
                 <hr class="border-b border-emerald-600 w-full mx-auto mb-3">
                 <a href="massages.html" class="flex bg-neutral-900/30 backdrop-blur-md shadow-lg shadow-emerald-900/30 m-3 mt-6 p-5 rounded-xl">
-                    <img src="/src/image/foto.png" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl mr-10 border-2 border-emerald-500">
+                    <img src="../src/image/foto.png" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl mr-10 border-2 border-emerald-500">
                     <div>
                         <h3 class="text-xl font-medium text-neutral-200">Chit Chat</h3>
                         <p class="text-neutral-400">you have new messages!</p>
                     </div>
                 </a>
                 <a href="#" class="flex bg-neutral-900/30 backdrop-blur-md shadow-lg shadow-emerald-900/30 m-3 mt-6 p-4 rounded-xl">
-                    <img src="/src/image/foto.png" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl mr-10 border-2 border-emerald-500">
+                    <img src="../src/image/foto.png" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl mr-10 border-2 border-emerald-500">
                     <div>
                         <h3 class="text-xl font-medium text-neutral-200">Chit Chat</h3>
                         <p class="text-neutral-400">you have new messages!</p>
                     </div>
                 </a>
                 <a href="#" class="flex bg-neutral-900/30 backdrop-blur-md shadow-lg shadow-emerald-900/30 m-3 mt-6 p-4 rounded-xl">
-                    <img src="/src/image/foto.png" class="rounded-full w-16 h-auto bg-gray-300 shadow-xl mr-10 border-2 border-emerald-500">
+                    <img src="../src/image/foto.png" class="rounded-full w-16 h-auto bg-gray-300 shadow-xl mr-10 border-2 border-emerald-500">
                     <div>
                         <h3 class="text-xl font-medium text-neutral-200">Chit Chat</h3>
                         <p class="text-neutral-400">you have new messages!</p>
@@ -166,7 +167,7 @@ if (isset($_SESSION['users'])){
             <a href="#" class="group block">
                 <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
                     <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
-                    <img src="/src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
+                    <img src="../src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
                     <div class="p-7">
                         <h3 class="text-neutral-300">Judul Proyek</h3>
                         <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
@@ -177,7 +178,7 @@ if (isset($_SESSION['users'])){
             <a href="#" class="group block">
                 <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
                     <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
-                    <img src="/src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
+                    <img src="../src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
                     <div class="p-7">
                         <h3 class="text-neutral-300">Judul Proyek</h3>
                         <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
@@ -188,7 +189,7 @@ if (isset($_SESSION['users'])){
             <a href="#" class="group block">
                 <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
                     <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
-                    <img src="/src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
+                    <img src="../src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
                     <div class="p-7">
                         <h3 class="text-neutral-300">Judul Proyek</h3>
                         <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>

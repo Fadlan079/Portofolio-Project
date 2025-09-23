@@ -49,7 +49,7 @@ try{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management - Fadlan Server</title>
-    <link rel="stylesheet" href="/src/css/output.css">
+    <link rel="stylesheet" href="../src/css/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
         .bg-carbon {
@@ -71,7 +71,7 @@ try{
     <header>
         <nav class="flex flex-col w-64 h-screen fixed bg-neutral-900/30 backdrop-blur-md shadow-xl border border-neutral-800 py-2  z-20" >
             <div class="m-4 flex">
-                <img src="/src/image/foto.png" alt="profile" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl border-2 border-emerald-500" >
+                <img src="../src/image/foto.png" alt="profile" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl border-2 border-emerald-500" >
                 <div class="block m-auto">
                     <h3 class=" text-emerald-500 font-bold"><?php echo ucwords($user['name']);?></h3>
                     <p class="text-neutral-500"><?php echo $user['role'];?></p>

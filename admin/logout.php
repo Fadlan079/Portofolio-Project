@@ -3,6 +3,6 @@ session_start();
 session_unset();
 session_destroy();
 
-header("Location:/admin/dashboard.php");
+header("Location:../admin/dashboard.php");
 exit;
 ?>

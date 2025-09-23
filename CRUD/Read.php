@@ -50,7 +50,7 @@ try{
                         'name' => $user['username'],
                         'role' => $user['role']
                     ];
-                    header("Location:/admin/dashboard.php?success=1");
+                    header("Location:../admin/dashboard.php?success=1");
                     exit;
                 }else{
                     header("Location:../../index.php?success=1");
@@ -73,7 +73,7 @@ try{
     <title>Login - Fadlan Server</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link href="/src/css/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="/portofolio-project/src/css/output.css">
     <style>
         .bg-carbon {
             background-color: #0a0a0a;
