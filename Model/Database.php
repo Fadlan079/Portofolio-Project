@@ -15,8 +15,9 @@ class Database {
             $dsn = "mysql:host={$host};dbname={$db}";
             $this->pdo = new PDO($dsn, $this->user,$this->pass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+            echo"koneksi berhasil";
         }catch (PDOException $e) {
-            echo("Server sedang sibuk, mohon tunggu sebentar.: " . $e->getMessage());
+            echo("Server sedang sibuk, mohon coba lagi nanti. : " . $e->getMessage());
         }
     }
 
@@ -24,6 +25,4 @@ class Database {
         return $this->pdo;
     }
 }
-$db = new Database("localhost","fadlanserver","root","");
-$pdo = $db->getConnection();
 ?>
