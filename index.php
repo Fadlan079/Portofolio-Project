@@ -1,3 +1,10 @@
+<?php
+require_once "Model/project.php";
+
+$project = new Project();
+$data = $project->Readproject();
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth scroll-pt-30">
 <head>
@@ -70,40 +77,19 @@
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-20">
-            <a href="#" class="group block" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="0">
-                <div class="bg-neutral-800/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 group-hover:scale-105 transition-all duration-300">
-                    <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
-                    <img src="/src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
-                    <div class="p-7">
-                        <h3 class="text-neutral-300">Judul Proyek</h3>
-                        <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
-                        <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
+            <?php foreach($data as $row):?>
+                <a href="<?=htmlspecialchars($row['repo'])?>" class="group block" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="0">
+                    <div class="bg-neutral-800/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 group-hover:scale-105 transition-all duration-300">
+                        <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
+                        <img src="<?=htmlspecialchars($row['image'])?>" class="w-full h-50 object-cover rounded-t-lg blur-xs">
+                        <div class="p-7">
+                            <h3 class="text-neutral-300"><?=htmlspecialchars($row['title'])?></h3>
+                            <p class="text-neutral-500"><?=htmlspecialchars($row['description'])?></p>
+                            <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a href="#" class="group block" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
-                <div class="bg-neutral-800/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 group-hover:scale-105 transition-all duration-300">
-                    <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
-                    <img src="/src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
-                    <div class="p-7">
-                        <h3 class="text-neutral-300">Judul Proyek</h3>
-                        <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
-                        <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="group block" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
-                <div class="bg-neutral-800/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 group-hover:scale-105 transition-all duration-300">
-                    <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
-                    <img src="/src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
-                    <div class="p-7">
-                        <h3 class="text-neutral-300">Judul Proyek</h3>
-                        <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
-                        <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
-                    </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            <?php endforeach?>
 
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
             <div class="shadow-lg shadow-emerald-900/30 rounded-xl border bg-neutral-800/30 backdrop-blur-xl border-neutral-800 block text-center p-5" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1000">

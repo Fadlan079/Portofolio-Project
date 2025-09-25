@@ -1,14 +1,13 @@
 <?php 
-session_start();
-$islogin = isset($_SESSION['users']);
-if (isset($_SESSION['users'])){
-    $user = $_SESSION['users'];
-}else{
-    $user = [
-        "name" => "Username",
-        "role" => "Guest"
-    ];
-}
+require_once "../Model/project.php";
+
+$project = new Project();
+
+// $project->Createproject("Perpustakaan Digital", "Aplikasi ini memudahkan pengelolaan data buku, anggota, dan transaksi peminjaman. Pengguna dapat melakukan pencarian, peminjaman, serta pengembalian buku secara terintegrasi melalui sistem berbasis web." , "test1.jpg" , "https://github.com/settings/profile" , "published");
+// $project->Createproject("Pasar Digital", "Aplikasi ini memudahkan pengelolaan data buku, anggota, dan transaksi peminjaman. Pengguna dapat melakukan pencarian, peminjaman, serta pengembalian buku secara terintegrasi melalui sistem berbasis web." , "test2.jpg" , "https://github.com/settings/profile" , "published");
+// $project->Createproject("Sistem Pengelola Keuangan", "Aplikasi ini memudahkan pengelolaan data buku, anggota, dan transaksi peminjaman. Pengguna dapat melakukan pencarian, peminjaman, serta pengembalian buku secara terintegrasi melalui sistem berbasis web." , "test3.jpg" , "https://github.com/settings/profile" , "published");
+
+$data = $project->Readproject();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,13 +39,12 @@ if (isset($_SESSION['users'])){
             <div class="m-4 flex">
                 <img src="../src/image/foto.png" alt="profile" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl border-2 border-emerald-500" >
                 <div class="block m-auto">
-                    <h3 class=" text-emerald-500 font-bold"><?php echo ucwords($user['name']);?></h3>
-                    <p class="text-neutral-500"><?php echo $user['role'];?></p>
+                    <h3 class=" text-emerald-500 font-bold">
+                    <p class="text-neutral-500">
                 </div>
             </div>
             <hr class="border-b border-emerald-600 w-1/1 mx-auto mb-3 opacity-50">
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <?php if($islogin):?>
             <a class="m-3 text-neutral-500 text-xl block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="projects.php"><i class="fa-solid fa-folder-open"></i> Project</a>
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="messages.php"><i class="fa-solid fa-paper-plane"></i> Messages</a>
             <a class="m-3  text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="profile.php"><i class="fa-solid fa-user"></i> Identity</a>
@@ -54,50 +52,29 @@ if (isset($_SESSION['users'])){
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="user-management.php"><i class="fa-solid fa-users"></i> User Management</a>
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="preferences.php"><i class="fa-solid fa-gear"></i> Preferences</a>
             <a class="m-3 bg-orange-500 text-neutral-300 text-xl  block px-4 py-2 rounded shadow-xl hover:bg-emerald-600 hover:scale-105 hover:text-neutral-950 hover:shadow-xl hover:shadow-emerald-900/30 transition-all duration-300 delay-150" href="logout.php"><i class="fa-solid fa-door-open"></i> Logout</a>
-            <?php else:?>
             <a class="m-3  text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="profile.php"><i class="fa-solid fa-user"></i> Identity</a>
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="preferences.php"><i class="fa-solid fa-gear"></i> Preferences</a>
             <a class="m-3 bg-orange-500 text-neutral-300 text-xl  block px-4 py-2 rounded shadow-xl hover:bg-emerald-600 hover:scale-105  hover:shadow-xl hover:shadow-emerald-900/30 hover:text-neutral-950 transition-all duration-300" href="/CRUD/Read.php"><i class="fa-solid fa-door-closed"></i> Login</a>
-            <?php endif;?>
         </nav>
     </header>
     <section class=" ml-64 p-5 relative z-20">
-        <h2>Project List</h2>
+        
+        <h2 class="text-5xl text-neutral-200 font-bold">Project List</h2>
         <p></p>
         <div class="grid grid-cols-3 gap-10 mt-10">
-            <a href="#" class="group block">
-                <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
-                    <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
-                    <img src="../src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
-                    <div class="p-7">
-                        <h3 class="text-neutral-300">Judul Proyek</h3>
-                        <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
-                        <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
+            <?php foreach($data as $row):?>
+                <a href="<?=htmlspecialchars($row['repo'])?>" class="group block">
+                    <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
+                        <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
+                        <img src="<?=htmlspecialchars($row['image'])?>" class="w-full h-50 object-cover rounded-t-lg blur-xs">
+                        <div class="p-7">
+                            
+                            <h3 class="text-neutral-300"><?=htmlspecialchars($row['title'])?></h3>
+                            <p class="text-neutral-500"><?=htmlspecialchars($row['description'])?></p>
+                            <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a href="#" class="group block">
-                <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
-                    <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
-                    <img src="../src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
-                    <div class="p-7">
-                        <h3 class="text-neutral-300">Judul Proyek</h3>
-                        <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
-                        <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="group block">
-                <div class="bg-neutral-900/30 backdrop-blur-md border border-neutral-800 shadow-lg rounded-xl shadow-emerald-900/30 m-px group-hover:shadow-xl group-hover:shadow-emerald-900/30 group-hover:-translate-y-5 transition-all duration-300">
-                    <div class="h-1 bg-emerald-500 rounded-xl group-hover:bg-orange-500"></div>
-                    <img src="../src/image/ilustration.jpg" class="w-full h-50 object-cover rounded-t-lg blur-xs">
-                    <div class="p-7">
-                        <h3 class="text-neutral-300">Judul Proyek</h3>
-                        <p class="text-neutral-500">Belum Ada Deskripsi Yang di isi</p>
-                        <p class="text-emerald-500 group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
-                    </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            <?php endforeach?>
     </section>
 </body>    

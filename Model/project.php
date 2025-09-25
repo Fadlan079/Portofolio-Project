@@ -5,17 +5,18 @@ class Project {
     private $pdo;
 
     public function __construct(){
-        $db = new Database();
+        $db = new Database("localhost","fadlanserver","root","");
         $this->pdo = $db->getConnection();
     }
 
     public function Createproject($title,$description,$image,$repo,$status){
+        $path = "../src/uploads/" . $image;
         $sql = "INSERT INTO project(title,description,image,repo,status) 
-        VALUES(:title, :description, ;image, :repo, :status)";
+        VALUES(:title, :description, :image, :repo, :status)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(":title", $title);
         $stmt->bindParam(":description", $description);
-        $stmt->bindParam(":image", $image);
+        $stmt->bindParam(":image", $path);
         $stmt->bindParam(":repo", $repo);
         $stmt->bindParam(":status", $status);
         return $stmt->execute();
