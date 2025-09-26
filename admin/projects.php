@@ -1,6 +1,8 @@
 <?php 
+session_start();
 require_once "../Model/project.php";
 
+$user = $_SESSION['users'];
 $project = new Project();
 
 // $project->Createproject("Perpustakaan Digital", "Aplikasi ini memudahkan pengelolaan data buku, anggota, dan transaksi peminjaman. Pengguna dapat melakukan pencarian, peminjaman, serta pengembalian buku secara terintegrasi melalui sistem berbasis web." , "test1.jpg" , "https://github.com/settings/profile" , "published");
@@ -39,22 +41,18 @@ $data = $project->Readproject();
             <div class="m-4 flex">
                 <img src="../src/image/foto.png" alt="profile" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl border-2 border-emerald-500" >
                 <div class="block m-auto">
-                    <h3 class=" text-emerald-500 font-bold">
-                    <p class="text-neutral-500">
+                    <h3 class=" text-emerald-500 font-bold"><?php echo ucwords($user['name']);?></h3>
+                    <p class="text-neutral-500"><?php echo $user['role'];?></p>
                 </div>
             </div>
             <hr class="border-b border-emerald-600 w-1/1 mx-auto mb-3 opacity-50">
-            <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a class="m-3 text-neutral-500 text-xl block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="projects.php"><i class="fa-solid fa-folder-open"></i> Project</a>
+            <a class="m-3 text-neutral-500 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a class="m-3 text-neutral-300 text-xl block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="projects.php"><i class="fa-solid fa-folder-open"></i> Project</a>
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="messages.php"><i class="fa-solid fa-paper-plane"></i> Messages</a>
             <a class="m-3  text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="profile.php"><i class="fa-solid fa-user"></i> Identity</a>
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="archive.php"><i class="fa-solid fa-box-archive"></i> Archive</a>
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="user-management.php"><i class="fa-solid fa-users"></i> User Management</a>
             <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="preferences.php"><i class="fa-solid fa-gear"></i> Preferences</a>
-            <a class="m-3 bg-orange-500 text-neutral-300 text-xl  block px-4 py-2 rounded shadow-xl hover:bg-emerald-600 hover:scale-105 hover:text-neutral-950 hover:shadow-xl hover:shadow-emerald-900/30 transition-all duration-300 delay-150" href="logout.php"><i class="fa-solid fa-door-open"></i> Logout</a>
-            <a class="m-3  text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="profile.php"><i class="fa-solid fa-user"></i> Identity</a>
-            <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="preferences.php"><i class="fa-solid fa-gear"></i> Preferences</a>
-            <a class="m-3 bg-orange-500 text-neutral-300 text-xl  block px-4 py-2 rounded shadow-xl hover:bg-emerald-600 hover:scale-105  hover:shadow-xl hover:shadow-emerald-900/30 hover:text-neutral-950 transition-all duration-300" href="/CRUD/Read.php"><i class="fa-solid fa-door-closed"></i> Login</a>
         </nav>
     </header>
     <section class=" ml-64 p-5 relative z-20">

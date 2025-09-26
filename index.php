@@ -11,7 +11,7 @@ $data = $project->Readproject();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fadlan Server</title>
-    <link rel="stylesheet" href="/src/css/output.css">
+    <link rel="stylesheet" href="src/css/output.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
@@ -61,7 +61,7 @@ $data = $project->Readproject();
                         </div>
                     </div>
                     <div class="lg:col-span-1 bg-gradient-to-r from-emerald-950 to-neutral-900 w-50 lg:w-90 h-50 lg:h-90 backdrop-blur-xl rounded-4xl drop-shadow-xl drop-shadow-emerald-900/30 flex justify-center items-center border border-neutral-800" data-aos="zoom-in" data-aos-duration="1800" data-aos-delay="1200">
-                        <img src="/src/image/foto.png" class="bg-emerald-500/50 w-26 lg:w-36 h-26 lg:h-36 rounded-3xl shadow-2xl animate-pulse">
+                        <img src="src/image/foto.png" class="bg-emerald-500/50 w-26 lg:w-36 h-26 lg:h-36 rounded-3xl shadow-2xl animate-pulse">
                     </div>
                 </div>
             </section>
@@ -90,7 +90,7 @@ $data = $project->Readproject();
                     </div>
                 </a>
             <?php endforeach?>
-
+        </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
             <div class="shadow-lg shadow-emerald-900/30 rounded-xl border bg-neutral-800/30 backdrop-blur-xl border-neutral-800 block text-center p-5" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1000">
                 <h2 class="font-bold text-emerald-500 text-2xl mb-3">15</h2>
@@ -113,7 +113,7 @@ $data = $project->Readproject();
     <section id="about" class="mx-auto max-w-5xl h-screen mt-40">
         <div class="grid grid-cols-2 gap-10">
             <div class="bg-gradient-to-r from-emerald-950 to-neutral-900 w-70 h-70 backdrop-blur-xl rounded-4xl drop-shadow-xl drop-shadow-emerald-900/30 flex justify-center items-center border border-neutral-800" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="0">
-                <img src="/src/image/foto.png" class="w-36 h-36 bg-emerald-500/50 rounded-xl animate-pulse">
+                <img src="src/image/foto.png" class="w-36 h-36 bg-emerald-500/50 rounded-xl animate-pulse">
             </div>
             <div class="m-auto">
                 <h2 class="font-bold text-2xl text-neutral-200 mb-3" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">Tentang Saya</h2>
