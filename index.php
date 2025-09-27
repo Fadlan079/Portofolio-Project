@@ -1,6 +1,49 @@
 <?php
+session_start();
 require_once "Model/project.php";
+require_once "Model/user.php";
+require_once "Model/form.php";
+$user = new User();
+$form = new Form();
 
+if ($_SERVER['REQUEST_METHOD'] == "POST"){
+    if(isset($_POST['login'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $data = $user->Read(null, $username);
+
+        if($data){
+            if(password_verify($password, $data['password'])){
+                $_SESSION['username'] = $data['username'];
+                $_SESSION['role'] = $data['role'];
+
+                if($data['role'] == 'admin' || $data['role'] == 'superadmin' || $data['role'] == 'owner'){    
+                    $_SESSION['users'] = [
+                        'name' => $data['username'],
+                        'role' => $data['role']
+                    ];
+                    header("Location:admin/dashboard.php?success=1");
+                    exit;
+                }else{
+                    header("Location:index.php?success=1");
+                    exit;
+                }
+            }else{
+                echo "Password Salah!";
+            }   
+        }else{
+            echo "User tidak ditemukan!";
+        }  
+    }elseif(isset($_POST['form'])){
+        $form->Createform(
+        $nama = $_POST['nama'],
+        $email = $_POST['email'],
+        $pesan = $_POST['pesan']
+    );
+        header("Location:index.php?submit=1");
+        exit;
+    } 
+}
 $project = new Project();
 $data = $project->Readproject();
 ?>
@@ -28,6 +71,24 @@ $data = $project->Readproject();
     </style>
 </head>
 <body class="bg-neutral-950 font-sans overflow-x-hidden">
+    <div id="form" class="opacity-0 scale-95 pointer-events-none fixed z-100 inset-0 bg-neutral-950/30 backdrop-blur-xl transition-all duration-300">
+        <form action="index.php" method="POST" class="grid grid-cols-1 bg-neutral-950/50 backdrop-blur-lg gap-10 p-5 m-auto mt-20 relative z-100 max-w-xl rounded-lg shadow-xl border border-neutral-700 text-neutral-300 font-bold">
+            <h2 class="text-2xl">Login</h2>
+            <input type="text" name="username" placeholder="Username..." required class="bg-neutral-900 border border-neutral-700 rounded-lg focus:outline-none focus:border-emerald-500 p-2">
+            <div class="w-full relative">
+                <input id="pass" type="password" name="password" placeholder="Password..." required class="bg-neutral-900 border border-neutral-700 rounded-lg focus:outline-none focus:border-emerald-500 p-2 w-full">
+                <i id="eye" class="fa-solid fa-eye absolute p-2 top-1 right-6"></i>
+            </div>
+            <a href="#" class="text-neutral-400 underline block text-right text-xs">forgot password?</a>
+            <div class="grid grid-cols-2 gap-5 text-center">
+                <input type="submit" value="Login" class="col-span-2 bg-orange-500 text-neutral-200 p-2 rounded-lg hover:bg-emerald-500 hover:text-neutral-900 transition-all duration-300">
+                <hr class="border border-emerald-500 rounded-full">
+                <hr class="border border-emerald-500 rounded-full">
+                <a href="register.php" class="col-span-2 block text-center text-neutral-400 underline text-xs">Belum punya akun? <b class="text-neutral-200">Register</b></a>
+                <button id="kembali" type="button" class="col-span-2 hover:underline hover:text-neutral-700 transition-all duration-300">Batal</button>
+            </div>
+        </form>
+    </div>
     <section class="relative bg-carbon lg:pt-5 lg:min-h-145 lg:m-7 rounded-xl">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-950/30 to-neutral-950 rounded-xl"></div>
             <header class="flex justify-between items-center px-3">
@@ -132,11 +193,11 @@ $data = $project->Readproject();
             <div>
                 <h2 class="text-neutral-200 font-bold text-5xl mb-3" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="0">Mari Bekerja Sama</h2>
                 <p class="text-neutral-500" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">Tertarik berdiskusi atau ingin memberikan masukan? Tinggalkan pesan, saya akan merespons secepatnya.</p>
-                <form action="" class="grid grid-cols-1 gap-10 bg-neutral-800/30 backdrop-blur-xl p-5 m-5 border border-neutral-800 shadow-lg shadow-emerald-900/30 rounded-2xl" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
-                    <input type="text" placeholder="Nama" class="text-neutral-400 bg-neutral-950 font-bold p-3 rounded-xl border border-neutral-800 focus:outline-none focus:border-emerald-500">
-                    <input type="email" placeholder="Email" class="text-neutral-400 bg-neutral-950 font-bold p-3 rounded-xl border border-neutral-800 focus:outline-none focus:border-emerald-500">
-                    <textarea name="" id="" placeholder="Isi Pesan" class="text-neutral-400 bg-neutral-950 font-bold p-3 rounded-xl border border-neutral-800 focus:outline-none focus:border-emerald-500"></textarea>
-                    <input type="submit" class="bg-orange-500 p-3 rounded-xl font-bold text-neutral-200 hover:text-neutral-900 hover:bg-emerald-500 hover:-translate-y-1 hover:shadow-lg shadow-emerald-900/30 transition-all duration-300">
+                <form action="index.php" method="POST" class="grid grid-cols-1 gap-10 bg-neutral-800/30 backdrop-blur-xl p-5 m-5 border border-neutral-800 shadow-lg shadow-emerald-900/30 rounded-2xl" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
+                    <input type="text" name="nama" placeholder="Nama" class="text-neutral-400 bg-neutral-950 font-bold p-3 rounded-xl border border-neutral-800 focus:outline-none focus:border-emerald-500">
+                    <input type="email" name="email" placeholder="Email" class="text-neutral-400 bg-neutral-950 font-bold p-3 rounded-xl border border-neutral-800 focus:outline-none focus:border-emerald-500">
+                    <textarea name="pesan" placeholder="Isi Pesan" class="text-neutral-400 bg-neutral-950 font-bold p-3 rounded-xl border border-neutral-800 focus:outline-none focus:border-emerald-500"></textarea>
+                    <input type="submit" name="form" class="bg-orange-500 p-3 rounded-xl font-bold text-neutral-200 hover:text-neutral-900 hover:bg-emerald-500 hover:-translate-y-1 hover:shadow-lg shadow-emerald-900/30 transition-all duration-300">
                 </form>
             </div>
             <div class="grid grid-rows-2">
@@ -156,7 +217,6 @@ $data = $project->Readproject();
     <footer class="p-5 flex justify-between max-w-7xl mx-auto">
         <p class="text-neutral-500 font-bold">&copy; Fadlan Server. All rights reserved</p>
     </footer>
-    
     <script>
         const navbar = document.getElementById("navbar");
         let lastScrollY = window.scrollY;
@@ -175,13 +235,29 @@ $data = $project->Readproject();
 
         let clickcount = 0;
         const logo = document.getElementById("logo");
+        const form = document.getElementById("form")
+        const kembali = document.getElementById("kembali");
 
         logo.addEventListener("click",() => {
             clickcount++;
             if(clickcount === 7){
-                window.location.href = "CRUD/Read.php";
+                form.classList.remove("opacity-0","scale-95","pointer-events-none");
+                form.classList.add("opacity-100", "scale-100");
+
+                clickcount = 0;
             }
         })
+
+        kembali.onclick = function(){
+            form.classList.remove("opacity-100","scale-100");
+            form.classList.add("opacity-0", "scale-95","pointer-events-none");
+        }
+
+        const eye = document.getElementById("eye");
+        const pass = document.getElementById("pass");
+        eye.addEventListener("click", ()=>{
+            pass.type = pass.type === "password" ? "text" : "password";
+        });
     </script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

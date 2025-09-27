@@ -26,42 +26,47 @@ $user = $_SESSION['users'];
 <body class="bg-neutral-950 font-sans relative">
     <div class="absolute inset-0 bg-carbon z-0 h-100"></div>
     <div class="absolute top-68 left-0 right-0 h-32 bg-gradient-to-b from-carbon to-neutral-950 z-0"></div>
-
-    <header>
-        <nav class="flex flex-col w-64 h-screen fixed bg-neutral-900/30 backdrop-blur-md shadow-xl border border-neutral-800 py-2  z-20" >
-            <div class="m-4 flex">
-                <img src="../src/image/foto.png" alt="profile" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl border-2 border-emerald-500" >
-                <div class="block m-auto">
-                    <h3 class=" text-emerald-500 font-bold"><?php echo ucwords($user['name']);?></h3>
-                    <p class="text-neutral-500"><?php echo $user['role'];?></p>
-                </div>
-            </div>
-            <hr class="border-b border-emerald-600 w-1/1 mx-auto mb-3 opacity-50">
-            <a class="m-3 text-neutral-500 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a class="m-3 text-neutral-300 text-xl block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="projects.php"><i class="fa-solid fa-folder-open"></i> Project</a>
-            <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="messages.php"><i class="fa-solid fa-paper-plane"></i> Messages</a>
-            <a class="m-3  text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="profile.php"><i class="fa-solid fa-user"></i> Identity</a>
-            <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="archive.php"><i class="fa-solid fa-box-archive"></i> Archive</a>
-            <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="user-management.php"><i class="fa-solid fa-users"></i> User Management</a>
-            <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="preferences.php"><i class="fa-solid fa-gear"></i> Preferences</a>
-        </nav>
+    <header class="grid grid-flow-col grid-rows-1 gap-10 shadow-xl p-6">
+        <div class="flex relative" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">
+            <h2 id="logo" class="bg-emerald-500 text-neutral-900 p-1 m-px rounded-lg font-bold text-2xl"><i class="fa-solid fa-code"></i></h2>
+            <h3 class="text-neutral-200 font-bold p-1 m-px text-xl">Fadlan Server</h3>
+        </div>
+        <div class="grid grid-flow-col grid-rows-1 gap-10 z-100 p-1 m-1 text-neutral-200">
+            <a href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="projects.php"><i class="fa-solid fa-bars-progress"></i> Project</a>
+            <a href="projects.php"><i class="fa-solid fa-users"></i> User</a>
+        </div>
+        <form method="GET" class="bg-neutral-950 text-neutral-200 border border-neutral-700 p-1 m-1 w-100 flex rounded-lg shadow-xl z-100">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" placeholder= "Cari apapun disini..." class="w-full mx-2 rounded-lg focus:outline-none">
+        </form>
+        <a href="#" class="inline-block text-center rounded-full w-11 h-auto bg-neutral-200 z-100"><i class="fa-solid fa-envelope"></i></a>
+        <img src="../src/image/foto.png" alt="" class="rounded-full w-11 h-auto bg-neutral-200 shadow-xl border-2 z-20  border-emerald-500">
     </header>
-    <section class=" ml-64 p-5 relative z-20">
-        <div>
-            <div class="flex justify-between shadow-xl p-6 rounded bg-neutral-900/30 backdrop-blur-md ">
-                <div>
-                    <h1 class="text-emerald-500 text-2xl font-bold">Selamat Datang, <?php echo ucwords($user['name']);?></h1>
-                    <p class="text-neutral-500">Pegang Kendali Penuh proyekmu dengan sistem manajemen yang praktis</p>
-                </div>
-                <div class="flex">
-                    <img src="../src/image/foto.png" alt="" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl mr-10 border-2 border-emerald-500">
-                    <div class="block text-right"> 
-                        <h3 class="text-emerald-500 text-xl font-bold"><?php echo ucwords($user['name']);?></h3>
-                        <p class="text-neutral-500"><?php echo $user['role'];?></p>
-                    </div>
-                </div>
+    <hr class="border-b border-emerald-600 w-1/1 mx-auto mb-3">
+    <nav class="grid grid-cols-1 text-neutral-900 font-bold fixed">
+        <button type="button" class="z-100 bg-neutral-200 rounded-full w-10 h-10 border border-neutral-700 ml-6"><i class="fa-solid fa-caret-left"></i></button>
+    </nav>
+    <!-- <nav class="flex flex-col w-64 h-screen fixed bg-neutral-900/30 backdrop-blur-md shadow-xl border border-neutral-800 py-2  z-20" >
+        <div class="m-4 flex">
+            <img src="../src/image/foto.png" alt="profile" class="rounded-full w-16 h-auto bg-neutral-300 shadow-xl border-2 border-emerald-500" >
+            <div class="block m-auto">
+                <h3 class=" text-emerald-500 font-bold"><?php echo ucwords($user['name']);?></h3>
+                <p class="text-neutral-500"><?php echo $user['role'];?></p>
             </div>
-            <hr class="border-b border-emerald-600 w-1/1 mx-auto mb-3">
+        </div>
+        <hr class="border-b border-emerald-600 w-1/1 mx-auto mb-3 opacity-50">
+        <a class="m-3 text-neutral-500 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a class="m-3 text-neutral-300 text-xl block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="projects.php"><i class="fa-solid fa-folder-open"></i> Project</a>
+        <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="messages.php"><i class="fa-solid fa-paper-plane"></i> Messages</a>
+        <a class="m-3  text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="profile.php"><i class="fa-solid fa-user"></i> Identity</a>
+        <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="archive.php"><i class="fa-solid fa-box-archive"></i> Archive</a>
+        <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="user-management.php"><i class="fa-solid fa-users"></i> User Management</a>
+        <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="preferences.php"><i class="fa-solid fa-gear"></i> Preferences</a>
+    </nav> -->
+    <section class=" ml-64 p-5 relative z-20">
+        <!-- <div>
+
 
             <div class="grid grid-cols-3 gap-10 mt-10 ">
                 <div class="block bg-neutral-900/30 shadow-2xl rounded-lg m-px p-5 backdrop-blur-md">
@@ -177,7 +182,7 @@ $user = $_SESSION['users'];
                     </div>
                 </div>
             </a>
-        </div>
+        </div> -->
     </section>
 </body>
 </html>

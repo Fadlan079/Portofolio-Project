@@ -10,7 +10,7 @@ class Project {
     }
 
     public function Createproject($title,$description,$image,$repo,$status){
-        $path = "../src/uploads/" . $image;
+        $path = __DIR__ . "/../../upload/" . $image;
         $sql = "INSERT INTO project(title,description,image,repo,status) 
         VALUES(:title, :description, :image, :repo, :status)";
         $stmt = $this->pdo->prepare($sql);
