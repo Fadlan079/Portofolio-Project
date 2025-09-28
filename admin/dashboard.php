@@ -46,6 +46,7 @@ $user = $_SESSION['users'];
     <hr class="border-b border-emerald-600 w-1/1 mx-auto mb-3">
     <nav class="grid grid-cols-1 text-neutral-900 font-bold fixed">
         <button type="button" class="z-100 bg-neutral-200 rounded-full w-10 h-10 border border-neutral-700 ml-6"><i class="fa-solid fa-caret-left"></i></button>
+        <button>~</button>
     </nav>
     <!-- <nav class="flex flex-col w-64 h-screen fixed bg-neutral-900/30 backdrop-blur-md shadow-xl border border-neutral-800 py-2  z-20" >
         <div class="m-4 flex">
