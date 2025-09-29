@@ -1,6 +1,18 @@
 <?php 
 session_start();
 $user = $_SESSION['users'];
+require_once "../Model/project.php";
+require_once "../Model/user.php";
+require_once "../Model/form.php";
+
+$project = new Project();
+$dataproject = $project->Readproject();
+
+$pengguna = new User();
+$datauser = $pengguna->Read();
+
+$pesan = new Form();
+$datapesan = $pesan->Readform();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,22 +43,22 @@ $user = $_SESSION['users'];
             <h2 id="logo" class="bg-emerald-500 text-neutral-900 p-1 m-px rounded-lg font-bold text-2xl"><i class="fa-solid fa-code"></i></h2>
             <h3 class="text-neutral-200 font-bold p-1 m-px text-xl">Fadlan Server</h3>
         </div>
-        <div class="grid grid-flow-col grid-rows-1 gap-10 z-100 p-1 m-1 text-neutral-200">
-            <a href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="projects.php"><i class="fa-solid fa-bars-progress"></i> Project</a>
-            <a href="projects.php"><i class="fa-solid fa-users"></i> User</a>
+        <div class="grid grid-flow-col grid-rows-1 gap-10 z-100 m-1 text-neutral-200 font-bold">
+            <a href="dashboard.php" class="bg-neutral-200 text-neutral-900 rounded-xl p-1"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="projects.php" class="p-1"><i class="fa-solid fa-bars-progress"></i> Project</a>
+            <a href="projects.php" class="p-1"><i class="fa-solid fa-users"></i> User</a>
         </div>
         <form method="GET" class="bg-neutral-950 text-neutral-200 border border-neutral-700 p-1 m-1 w-100 flex rounded-lg shadow-xl z-100">
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             <input type="text" placeholder= "Cari apapun disini..." class="w-full mx-2 rounded-lg focus:outline-none">
         </form>
-        <a href="#" class="inline-block text-center rounded-full w-11 h-auto bg-neutral-200 z-100"><i class="fa-solid fa-envelope"></i></a>
-        <img src="../src/image/foto.png" alt="" class="rounded-full w-11 h-auto bg-neutral-200 shadow-xl border-2 z-20  border-emerald-500">
+        <a href="#" class="rounded-full w-10 h-10 bg-neutral-200 z-100"><i class="fa-solid fa-envelope"></i></a>
+        <img src="../src/image/foto.png" alt="" class="rounded-full w-11 h-11 bg-neutral-200 shadow-xl border-2 z-20  border-emerald-500">
     </header>
-    <hr class="border-b border-emerald-600 w-1/1 mx-auto mb-3">
-    <nav class="grid grid-cols-1 text-neutral-900 font-bold fixed">
-        <button type="button" class="z-100 bg-neutral-200 rounded-full w-10 h-10 border border-neutral-700 ml-6"><i class="fa-solid fa-caret-left"></i></button>
-        <button>~</button>
+    <nav class="grid grid-cols-1 gap-5 text-neutral-900 font-bold absolute mt-10">
+        <button type="button" class="z-100 bg-neutral-200 rounded-full w-10 h-10 border border-neutral-400 shadow-xl ml-6"><i class="fa-solid fa-caret-left"></i></button>
+        <button type="button" class="z-100 bg-neutral-200 rounded-full w-10 h-10 border border-neutral-400 shadow-xl ml-6"><i class="fa-solid fa-plus"></i></button>
+        <button type="button" class="z-100 bg-neutral-200 rounded-full w-10 h-10 border border-neutral-400 shadow-xl ml-6"><i class="fa-solid fa-user-plus"></i></button>
     </nav>
     <!-- <nav class="flex flex-col w-64 h-screen fixed bg-neutral-900/30 backdrop-blur-md shadow-xl border border-neutral-800 py-2  z-20" >
         <div class="m-4 flex">
@@ -65,7 +77,93 @@ $user = $_SESSION['users'];
         <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded  hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="user-management.php"><i class="fa-solid fa-users"></i> User Management</a>
         <a class="m-3 text-neutral-300 text-xl  block px-4 py-2 rounded hover:text-emerald-500 hover:shadow-xl hover:scale-105 shadow-emerald-900/30 transition-all duration-300" href="preferences.php"><i class="fa-solid fa-gear"></i> Preferences</a>
     </nav> -->
-    <section class=" ml-64 p-5 relative z-20">
+    <section class="relative ml-20 mt-10 mx-10 grid grid-cols-2 gap-3 z-100">
+        <div class="col-span-2 w-full m-auto bg-neutral-200 shadow-xl rounded-4xl p-5">
+            <h2 class="font-bold text-neutral-900 text-2xl">Portofolio Journey</h2>
+        </div>
+        <section class="col-span-2 m-auto bg-gradient-to-b from-neutral-200 via-neutral-300 to-neutral-700 rounded-3xl p-5">
+            <div class="flex justify-between">
+                <h2 class="font-bold text-2xl m-2 text-neutral-900">Recent Project</h2>
+                <div>
+                    <button class="w-10 h-10 rounded-full shadow-xl border border-neutral-400"><i class="fa-solid fa-plus"></i></button>
+                    <button class="w-10 h-10 rounded-full shadow-xl border border-neutral-400"><i class="fa-solid fa-filter"></i></button>
+                </div>
+                
+            </div>
+            <div class="grid grid-cols-4 gap-4 mt-5">
+                <?php foreach($dataproject as $row):?>
+                    <a href="<?=htmlspecialchars($row['repo'])?>" class="group block">
+                        <div class="bg-neutral-900 backdrop-blur-md border border-neutral-800 shadow-xl rounded-3xl  m-px group-hover:shadow-2xl group-hover:-translate-y-5 transition-all duration-300">
+                            <img src="<?=htmlspecialchars($row['image'])?>" class="w-full h-40 object-cover rounded-t-3xl ">
+                            <div class="p-3">
+                                <h3 class="text-neutral-200 font-bold text-xl tracking-wide"><?=htmlspecialchars($row['title'])?></h3>
+                                <p class="text-neutral-400 tracking-wide text-xs"><?=htmlspecialchars($row['description'])?></p>
+                                <p class="text-emerald-500 font-bold group-hover:text-orange-500 transition-all duration-300"> <i class="fa-solid fa-link"></i>Lihat Repo</p>
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach?>
+            </div>
+        </section>
+        <section class="w-full min-h-full m-auto bg-gradient-to-t from-neutral-200 via-neutral-300 to-neutral-700 rounded-3xl p-5">
+            <div class="flex justify-between">
+                <h2 class="font-bold text-2xl m-2 text-neutral-200">Recent User</h2>
+                <div class="text-neutral-200">
+                    <button class="w-10 h-10 rounded-full shadow-xl border border-neutral-400"><i class="fa-solid fa-plus"></i></button>
+                    <button class="w-10 h-10 rounded-full shadow-xl border border-neutral-400"><i class="fa-solid fa-filter"></i></button>
+                </div>
+            </div>
+            <table class="my-5 w-full border-collapse text-center shadow-xl">
+                <tr class="bg-neutral-900 text-neutral-200 text-sm">
+                    <th class="p-1 rounded-tl-3xl">ID</th>
+                    <th class="p-1">Email</th>
+                    <th class="p-1">Username</th>
+                    <th class="p-1">Role</th>
+                    <th class="p-1 rounded-tr-3xl">Option</th>
+                </tr>
+                <?php foreach($datauser as $row):?>
+                    <tr class="text-neutral-200 bg-neutral-900 text-xs">
+                        <td class="p-3"><?= htmlspecialchars($row['id_users'])?></td>
+                        <td class="p-3"><?= htmlspecialchars($row['email'])?></td>
+                        <td class="p-3"><?= htmlspecialchars($row['username'])?></td>
+                        <?php if($row['role'] == 'owner'):?>
+                            <td><span class="bg-gradient-to-r from-yellow-500 to-yellow-700  p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
+                        <?php elseif($row['role'] == 'superadmin'):?>
+                            <td><span class="bg-gradient-to-r from-red-500 to-red-800  p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
+                        <?php elseif($row['role'] == 'admin'):?>
+                            <td><span class="bg-gradient-to-r from-emerald-500 to-emerald-700  p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
+                        <?php else:?>
+                            <td><span class="bg-gradient-to-r from-neutral-500 to-neutral-700 d p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
+                        <?php endif?>     
+                        <td class="p-3 grid grid-cols-2 gap-5">
+                            <button type="button" class="update p-1 text-left  border border-neutral-400 rounded-full shadow-xl  hover:text-neutral-900 hover:bg-emerald-500 transition-all duration-300"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <a href="user-management.php?id_users=<?= $row['id_users']?>" onclick="return confirm('Yakin mau Hapus User <?=htmlspecialchars($row['username'])?> dengan ID <?=htmlspecialchars($row['id_users'])?> ?')" class="p-1 text-left text-red-500 font-bold  border border-neutral-400 rounded-full shadow-xl hover:text-neutral-900 hover:bg-red-500 transition-all duration-300"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                <?php endforeach?>
+            </table>
+        </section>
+        <section class="w-full h-full m-auto bg-gradient-to-t from-neutral-200 via-neutral-300 to-neutral-700 rounded-3xl p-5">
+            <div class="flex justify-between">
+                <h2 class="font-bold text-2xl m-2 text-neutral-200">Recent Messages</h2>
+                <div class="text-neutral-200">
+                    <button class="w-10 h-10 rounded-full shadow-xl border border-neutral-400"><i class="fa-solid fa-plus"></i></button>
+                    <button class="w-10 h-10 rounded-full shadow-xl border border-neutral-400"><i class="fa-solid fa-filter"></i></button>
+                </div>
+                
+            </div>
+            <div class="grid grid-cols-1 gap-4 mt-5">
+                <?php foreach($datapesan as $row):?>
+                    <div class="bg-neutral-900 backdrop-blur-md border border-neutral-800 shadow-xl rounded-3xl  m-px group-hover:shadow-2xl group-hover:-translate-y-5 transition-all duration-300">
+                        <div class="p-3">
+                            <h3 class="text-neutral-200 font-bold text-xl tracking-wide"><?=htmlspecialchars($row['nama'])?></h3>
+                            <p class="text-neutral-400 tracking-wide text-xs"><?=htmlspecialchars($row['email'])?></p>
+                            <p class="text-neutral-400 tracking-wide text-xs"><?=htmlspecialchars($row['pesan'])?></p>
+                        </div>
+                    </div>
+                <?php endforeach?>
+            </div>
+        </section>
         <!-- <div>
 
 

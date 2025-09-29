@@ -95,33 +95,33 @@ if(isset($_GET['id_users'])){
         <hr class="border-b border-emerald-600 w-1/1 mx-auto mb-3">
 
        <table class="my-5 w-full border-collapse text-left shadow-lg shadow-emerald-900/30">
-        <tr class="bg-emerald-300/70 backdrop-blur-xl text-emerald-800">
-            <th class="p-2 rounded-tl-sm">ID</th>
-            <th class="p-2">Email</th>
-            <th class="p-2">Username</th>
-            <th class="p-2">Role</th>
-            <th class="p-2 rounded-tr-sm">Option</th>
-        </tr>
-        <?php foreach($data as $row): ?>
-            <tr class="text-neutral-200 bg-neutral-900/30 backdrop-blur-lg">
-                <td class="p-3"><?= htmlspecialchars($row['id_users'])?></td>
-                <td class="p-3"><?= htmlspecialchars($row['email'])?></td>
-                <td class="p-3"><?= htmlspecialchars($row['username'])?></td>
-                <?php if($row['role'] == 'owner'):?>
-                    <td><span class="bg-gradient-to-r from-yellow-500 to-yellow-700 font-bold p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
-                <?php elseif($row['role'] == 'superadmin'):?>
-                    <td><span class="bg-gradient-to-r from-red-500 to-red-800 font-bold p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
-                <?php elseif($row['role'] == 'admin'):?>
-                    <td><span class="bg-gradient-to-r from-emerald-500 to-emerald-700 font-bold p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
-                <?php else:?>
-                    <td><span class="bg-gradient-to-r from-neutral-500 to-neutral-700 font-bold p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
-                <?php endif?>     
-                <td class="p-3 grid grid-cols-2 gap-5">
-                    <button type="button" class="update p-1 text-left text-emerald-500 font-bold border border-emerald-500 rounded-lg hover:text-neutral-900 hover:bg-emerald-500 transition-all duration-300"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-                    <a href="user-management.php?id_users=<?= $row['id_users']?>" onclick="return confirm('Yakin mau Hapus User <?=htmlspecialchars($row['username'])?> dengan ID <?=htmlspecialchars($row['id_users'])?> ?')" class="p-1 text-left text-red-500 font-bold  border border-red-500 rounded-lg hover:text-neutral-900 hover:bg-red-500 transition-all duration-300"><i class="fa-solid fa-trash"></i> Delete</a>
-                </td>
+            <tr class="bg-emerald-300/70 backdrop-blur-xl text-emerald-800">
+                <th class="p-2 rounded-tl-sm">ID</th>
+                <th class="p-2">Email</th>
+                <th class="p-2">Username</th>
+                <th class="p-2">Role</th>
+                <th class="p-2 rounded-tr-sm">Option</th>
             </tr>
-        <?php endforeach?>
+            <?php foreach($data as $row): ?>
+                <tr class="text-neutral-200 bg-neutral-900/30 backdrop-blur-lg">
+                    <td class="p-3"><?= htmlspecialchars($row['id_users'])?></td>
+                    <td class="p-3"><?= htmlspecialchars($row['email'])?></td>
+                    <td class="p-3"><?= htmlspecialchars($row['username'])?></td>
+                    <?php if($row['role'] == 'owner'):?>
+                        <td><span class="bg-gradient-to-r from-yellow-500 to-yellow-700 font-bold p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
+                    <?php elseif($row['role'] == 'superadmin'):?>
+                        <td><span class="bg-gradient-to-r from-red-500 to-red-800 font-bold p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
+                    <?php elseif($row['role'] == 'admin'):?>
+                        <td><span class="bg-gradient-to-r from-emerald-500 to-emerald-700 font-bold p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
+                    <?php else:?>
+                        <td><span class="bg-gradient-to-r from-neutral-500 to-neutral-700 font-bold p-1 inline-block w-32 text-center rounded-full"><?= htmlspecialchars($row['role'])?></span></td>
+                    <?php endif?>     
+                    <td class="p-3 grid grid-cols-2 gap-5">
+                        <button type="button" class="update p-1 text-left text-emerald-500 font-bold border border-emerald-500 rounded-lg hover:text-neutral-900 hover:bg-emerald-500 transition-all duration-300"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                        <a href="user-management.php?id_users=<?= $row['id_users']?>" onclick="return confirm('Yakin mau Hapus User <?=htmlspecialchars($row['username'])?> dengan ID <?=htmlspecialchars($row['id_users'])?> ?')" class="p-1 text-left text-red-500 font-bold  border border-red-500 rounded-lg hover:text-neutral-900 hover:bg-red-500 transition-all duration-300"><i class="fa-solid fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach?>
        </table>
     </section>
     <div id="form" class="opacity-0 scale-95 pointer-events-none fixed z-30 inset-0 bg-neutral-950/30 backdrop-blur-xl transition-all duration-300">

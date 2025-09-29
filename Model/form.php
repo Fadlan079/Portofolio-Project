@@ -26,7 +26,7 @@ class Form {
     public function Readform(){
         $sql = "SELECT * FROM form";
         $stmt = $this->pdo->query($sql);
-        return $srtmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function Deleteform($id_form){
