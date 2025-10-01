@@ -35,25 +35,50 @@ $datapesan = $pesan->Readform();
         }
     </style>
 </head>
-<body class="bg-neutral-950 font-sans relative">
-    <div class="absolute inset-0 bg-carbon z-0 h-100"></div>
-    <div class="absolute top-68 left-0 right-0 h-32 bg-gradient-to-b from-carbon to-neutral-950 z-0"></div>
-    <header class="grid grid-flow-col grid-rows-1 gap-10 shadow-xl p-6">
-        <div class="flex relative" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">
-            <h2 id="logo" class="bg-emerald-500 text-neutral-900 p-1 m-px rounded-lg font-bold text-2xl"><i class="fa-solid fa-code"></i></h2>
-            <h3 class="text-neutral-200 font-bold p-1 m-px text-xl">Fadlan Server</h3>
+<body class="bg-neutral-200 font-sans h-screen relative">
+    <!-- <div class="absolute inset-0 bg-carbon z-0 h-100"></div>
+    <div class="absolute top-68 left-0 right-0 h-32 bg-gradient-to-b from-carbon to-neutral-950 z-0"></div> -->
+    <header class="bg-neutral-900 h-1/2">
+        <div class="max-w-7xl m-auto grid grid-flow-col grid-rows-3 gap-7 p-7">
+            <div class="flex justify-between">
+                <div class="flex text-center my-auto">
+                    <h2 class="bg-neutral-200 text-neutral-900 p-1 m-px rounded-lg font-bold text-2xl"><i class="fa-solid fa-code"></i></h2>
+                    <h2 class="text-neutral-200 text-2xl p-1 font-bold">Fadlan Server</h2>
+                </div>
+                <div class="text-neutral-200 font-bold">
+                    <img src="" alt="profil">
+                </div>
+            </div>
+            <div >
+                <div class="text-neutral-200 font-bold">
+                    <a href="dashboard.php" class="bg-neutral-200 text-neutral-900 rounded-xl p-1"><i class="fa-solid fa-house"></i> Dashboard</a>
+                    <a href="projects.php" class="p-1"><i class="fa-solid fa-bars-progress"></i> Project</a>
+                    <a href="projects.php" class="p-1"><i class="fa-solid fa-users"></i> User</a>
+                </div>
+            </div>
+            <div class="text-neutral-200 font-bold">
+                <h1 class="text-2xl">Selamat Datang,<span class="text-orange-500">Fadlan Firdaus</span></h1>
+                <p>Pegang Kendali Penuh proyekmu dengan sistem manajemen yang praktis</p>
+            </div>
+
+            <!-- <div class="flex relative" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">
+                <h2 id="logo" class="bg-emerald-500 text-neutral-900 p-1 m-px rounded-lg font-bold text-2xl"><i class="fa-solid fa-code"></i></h2>
+                <h3 class="text-neutral-200 font-bold p-1 m-px text-xl">Fadlan Server</h3>
+            </div>
+            <div class="grid grid-flow-col grid-rows-1 gap-10 z-100 m-1 text-neutral-200 font-bold">
+                <a href="dashboard.php" class="bg-neutral-200 text-neutral-900 rounded-xl p-1"><i class="fa-solid fa-house"></i> Dashboard</a>
+                <a href="projects.php" class="p-1"><i class="fa-solid fa-bars-progress"></i> Project</a>
+                <a href="projects.php" class="p-1"><i class="fa-solid fa-users"></i> User</a>
+            </div>
+            <a href="#" class="rounded-full w-10 h-10 bg-neutral-200 z-100"><i class="fa-solid fa-envelope"></i></a>
+            <img src="../src/image/foto.png" alt="" class="rounded-full w-11 h-11 bg-neutral-200 shadow-xl border-2 z-20  border-emerald-500"> -->
+            <form method="GET" class="bg-neutral-200 text-neutral-950 border border-neutral-700 flex absolute top-77 left-1/2 translate-y-1/2 -translate-x-1/2 w-1/2 p-4 rounded-full">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" placeholder= "Cari apapun disini..." class="w-full mx-2 rounded-lg focus:outline-none">
+            </form>
         </div>
-        <div class="grid grid-flow-col grid-rows-1 gap-10 z-100 m-1 text-neutral-200 font-bold">
-            <a href="dashboard.php" class="bg-neutral-200 text-neutral-900 rounded-xl p-1"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="projects.php" class="p-1"><i class="fa-solid fa-bars-progress"></i> Project</a>
-            <a href="projects.php" class="p-1"><i class="fa-solid fa-users"></i> User</a>
-        </div>
-        <form method="GET" class="bg-neutral-950 text-neutral-200 border border-neutral-700 p-1 m-1 w-100 flex rounded-lg shadow-xl z-100">
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <input type="text" placeholder= "Cari apapun disini..." class="w-full mx-2 rounded-lg focus:outline-none">
-        </form>
-        <a href="#" class="rounded-full w-10 h-10 bg-neutral-200 z-100"><i class="fa-solid fa-envelope"></i></a>
-        <img src="../src/image/foto.png" alt="" class="rounded-full w-11 h-11 bg-neutral-200 shadow-xl border-2 z-20  border-emerald-500">
+        
+
     </header>
     <nav class="grid grid-cols-1 gap-5 text-neutral-900 font-bold absolute mt-10">
         <button type="button" class="z-100 bg-neutral-200 rounded-full w-10 h-10 border border-neutral-400 shadow-xl ml-6"><i class="fa-solid fa-caret-left"></i></button>
